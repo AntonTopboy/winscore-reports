@@ -32,20 +32,122 @@
             --ws-arba-bg: rgba(99, 102, 241, 0.1);
             --ws-live: #EF4444;
             --ws-live-bg: rgba(239, 68, 68, 0.1);
+            --millwall-blue: #001C58;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--ws-bg-primary); color: var(--ws-text-primary); line-height: 1.5; min-height: 100vh; }
+        
+        /* Millwall Heritage Background */
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            color: var(--ws-text-primary); 
+            line-height: 1.5; 
+            min-height: 100vh;
+            background: #0a0a0a;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background: 
+                /* Vintage grain overlay */
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+                /* Millwall historical collage effect */
+                linear-gradient(135deg, 
+                    rgba(0,28,88,0.95) 0%, 
+                    rgba(10,10,10,0.98) 25%,
+                    rgba(0,28,88,0.9) 50%,
+                    rgba(10,10,10,0.98) 75%,
+                    rgba(0,28,88,0.95) 100%
+                );
+            background-blend-mode: overlay, normal;
+            opacity: 0.15;
+        }
+        
+        /* Photo collage frames */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            background-image: 
+                /* Old Den stadium silhouette */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200'%3E%3Cpath d='M0 200 L0 150 L50 150 L50 100 L100 100 L100 80 L150 80 L150 60 L200 60 L200 80 L250 80 L250 100 L300 100 L300 80 L350 80 L350 60 L400 40 L450 60 L450 80 L500 80 L500 100 L550 100 L550 80 L600 80 L600 60 L650 60 L650 80 L700 80 L700 100 L750 100 L750 150 L800 150 L800 200 Z' fill='%23001C58' opacity='0.08'/%3E%3C/svg%3E"),
+                /* Vintage photo borders */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='5' y='5' width='25' height='35' rx='1' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.05' transform='rotate(-8 17 22)'/%3E%3Crect x='60' y='15' width='30' height='40' rx='1' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.04' transform='rotate(5 75 35)'/%3E%3Crect x='25' y='55' width='28' height='38' rx='1' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.03' transform='rotate(-3 39 74)'/%3E%3C/svg%3E"),
+                /* Lion silhouettes (Millwall mascot) */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 20 Q120 30 125 50 Q140 45 150 60 Q145 75 130 80 Q135 95 125 110 Q130 125 120 140 L100 150 L80 140 Q70 125 75 110 Q65 95 70 80 Q55 75 50 60 Q60 45 75 50 Q80 30 100 20' fill='%23001C58' opacity='0.03'/%3E%3C/svg%3E");
+            background-size: 100% auto, 200px 200px, 300px 300px;
+            background-position: bottom, center, center;
+            background-repeat: no-repeat, repeat, repeat;
+        }
+        
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, 
+                rgba(251,251,251,0.97) 0%,
+                rgba(251,251,251,0.99) 50%,
+                rgba(251,251,251,0.97) 100%
+            );
+            min-height: 100vh;
+        }
+        
         .container { max-width: 800px; margin: 0 auto; padding: 16px; }
         
         /* Header with Logo */
         .header { text-align: center; padding: 24px 0 32px; }
         .logo-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
-        .logo-img { width: 48px; height: 48px; border-radius: 12px; }
+        
+        /* SVG Logo */
+        .logo-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--ws-accent) 0%, #FF6B35 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 77, 0, 0.3);
+        }
+        .logo-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
         .logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: var(--ws-accent); }
         .subtitle { font-size: 18px; font-weight: 600; color: var(--ws-text-primary); margin-bottom: 16px; }
         .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         .meta-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--ws-bg-card); border: 1px solid var(--ws-border); border-radius: var(--ws-radius-full); font-size: 12px; color: var(--ws-text-secondary); }
         .meta-chip.arba { background: var(--ws-arba-bg); border-color: var(--ws-arba); color: var(--ws-arba); font-weight: 600; }
+        
+        /* Millwall heritage badge */
+        .heritage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            background: linear-gradient(135deg, var(--millwall-blue) 0%, #003399 100%);
+            border-radius: var(--ws-radius-full);
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .heritage-badge::before {
+            content: '🦁';
+        }
         
         .card { background: var(--ws-bg-card); border-radius: var(--ws-radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--ws-shadow); border: 1px solid var(--ws-border); }
         .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
@@ -142,7 +244,20 @@
         /* Footer */
         .footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--ws-border); margin-top: 16px; }
         .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
-        .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+        .footer-logo-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--ws-accent) 0%, #FF6B35 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-logo-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
         .footer-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--ws-text-tertiary); }
         .footer-text { font-size: 11px; color: var(--ws-text-tertiary); }
 
@@ -151,7 +266,8 @@
             .container { padding: 24px; }
             .header { padding: 32px 0 40px; }
             .logo { font-size: 36px; }
-            .logo-img { width: 56px; height: 56px; }
+            .logo-icon { width: 60px; height: 60px; border-radius: 16px; }
+            .logo-icon svg { width: 36px; height: 36px; }
             .subtitle { font-size: 22px; }
             .card { padding: 24px; margin-bottom: 20px; }
             .card-title { font-size: 20px; }
@@ -171,11 +287,16 @@
     </style>
 </head>
 <body>
+    <div class="page-wrapper">
     <div class="container">
         <!-- Header with Logo -->
         <header class="header">
             <div class="logo-container">
-                <img src="https://play-lh.googleusercontent.com/vWzIT9gX4bHLXluCvGnKu4253jHYxMvjPYWmQkPiSbqhVjGcO1F8xGhQd3aLtEuALw=w240-h480-rw" alt="WinScore" class="logo-img">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                </div>
                 <span class="logo">WINSCORE</span>
             </div>
             <h1 class="subtitle">Сравнение провайдеров с ARBA</h1>
@@ -184,6 +305,7 @@
                 <span class="meta-chip">📅 09–16 января 2026</span>
                 <span class="meta-chip">📡 3 провайдера</span>
             </div>
+            <div class="heritage-badge">Millwall FC Heritage Edition</div>
         </header>
 
         <!-- ARBA Banner -->
@@ -644,11 +766,16 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-logo">
-                <img src="https://play-lh.googleusercontent.com/vWzIT9gX4bHLXluCvGnKu4253jHYxMvjPYWmQkPiSbqhVjGcO1F8xGhQd3aLtEuALw=w240-h480-rw" alt="WinScore">
+                <div class="footer-logo-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                </div>
                 <span>WINSCORE</span>
             </div>
-            <div class="footer-text">Сравнение с ARBA • 09–16 января 2026</div>
+            <div class="footer-text">Сравнение с ARBA • 09–16 января 2026 • 🦁 Millwall Heritage</div>
         </footer>
+    </div>
     </div>
 </body>
 </html>
