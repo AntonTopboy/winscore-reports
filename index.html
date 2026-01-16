@@ -30,6 +30,8 @@
             --ws-radius-full: 100px;
             --ws-arba: #6366F1;
             --ws-arba-bg: rgba(99, 102, 241, 0.1);
+            --ws-live: #EF4444;
+            --ws-live-bg: rgba(239, 68, 68, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, sans-serif; background: var(--ws-bg-primary); color: var(--ws-text-primary); line-height: 1.5; min-height: 100vh; }
@@ -43,13 +45,14 @@
         .card { background: var(--ws-bg-card); border-radius: var(--ws-radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--ws-shadow); border: 1px solid var(--ws-border); }
         .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
         .card-icon { width: 36px; height: 36px; border-radius: var(--ws-radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--ws-accent-light); }
+        .card-icon.live { background: var(--ws-live-bg); }
         .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.5px; }
         
         /* ARBA Banner */
         .arba-banner { background: linear-gradient(135deg, var(--ws-arba), #8B5CF6); border-radius: var(--ws-radius); padding: 20px; margin-bottom: 16px; color: white; text-align: center; }
         .arba-banner h2 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; margin-bottom: 8px; }
         .arba-banner p { font-size: 14px; opacity: 0.9; }
-        .arba-stats { display: flex; justify-content: center; gap: 32px; margin-top: 16px; }
+        .arba-stats { display: flex; justify-content: center; gap: 32px; margin-top: 16px; flex-wrap: wrap; }
         .arba-stat { text-align: center; }
         .arba-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; }
         .arba-stat-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; }
@@ -61,22 +64,40 @@
         .stat-label { font-size: 11px; color: var(--ws-text-secondary); text-transform: uppercase; }
         .stat-card.success .stat-value { color: var(--ws-success); }
         .stat-card.warning .stat-value { color: var(--ws-warning); }
-        .stat-card.error .stat-value { color: var(--ws-error); }
+        .stat-card.live .stat-value { color: var(--ws-live); }
+        .stat-card.live { border-color: var(--ws-live-bg); }
 
-        /* Comparison Table */
+        /* Tables */
+        .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .data-table th { text-align: center; padding: 10px 6px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 10px; text-transform: uppercase; color: var(--ws-text-secondary); }
+        .data-table th:first-child { text-align: left; border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
+        .data-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; }
+        .data-table th.arba-col { background: var(--ws-arba-bg); color: var(--ws-arba); }
+        .data-table th.live-col { background: var(--ws-live-bg); color: var(--ws-live); }
+        .data-table td { padding: 12px 6px; border-bottom: 1px solid var(--ws-border); text-align: center; }
+        .data-table td:first-child { text-align: left; font-weight: 500; }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table .total-row { background: var(--ws-bg-secondary); font-weight: 700; }
+        .data-table .total-row td { border-bottom: none; }
+        .data-table .highlight { color: var(--ws-success); font-weight: 600; }
+        .data-table .warning { color: var(--ws-warning); }
+        .data-table .error { color: var(--ws-error); }
+        .data-table .arba-cell { background: var(--ws-arba-bg); color: var(--ws-arba); font-weight: 600; }
+        .data-table .live-cell { color: var(--ws-live); font-weight: 600; }
+
+        /* Compare Table */
         .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
         .compare-table th { text-align: left; padding: 12px 10px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 11px; text-transform: uppercase; color: var(--ws-text-secondary); }
         .compare-table th:first-child { border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
         .compare-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; text-align: center; }
-        .compare-table th.arba-col { background: var(--ws-arba-bg); color: var(--ws-arba); }
         .compare-table td { padding: 14px 10px; border-bottom: 1px solid var(--ws-border); }
         .compare-table td:last-child { text-align: center; }
         .compare-table tr:last-child td { border-bottom: none; }
         .compare-table .provider-name { font-weight: 600; }
         .compare-table .arba-row { background: var(--ws-arba-bg); }
-        .compare-table .arba-row td { font-weight: 600; color: var(--ws-arba); border-bottom-color: var(--ws-arba); }
+        .compare-table .arba-row td { font-weight: 600; color: var(--ws-arba); }
 
-        /* Progress bars */
+        /* Coverage bars */
         .coverage-bar { display: flex; align-items: center; gap: 8px; }
         .coverage-track { flex: 1; height: 8px; background: var(--ws-bg-secondary); border-radius: 4px; overflow: hidden; }
         .coverage-fill { height: 100%; border-radius: 4px; }
@@ -91,6 +112,18 @@
         .badge-warning { background: var(--ws-warning-bg); color: var(--ws-warning); }
         .badge-error { background: var(--ws-error-bg); color: var(--ws-error); }
         .badge-arba { background: var(--ws-arba-bg); color: var(--ws-arba); }
+        .badge-live { background: var(--ws-live-bg); color: var(--ws-live); }
+
+        /* Live Banner */
+        .live-banner { background: linear-gradient(135deg, var(--ws-live), #F87171); border-radius: var(--ws-radius); padding: 16px 20px; margin-bottom: 16px; color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .live-banner-left { display: flex; align-items: center; gap: 12px; }
+        .live-dot { width: 12px; height: 12px; background: white; border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .live-banner h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; }
+        .live-banner-stats { display: flex; gap: 24px; }
+        .live-banner-stat { text-align: center; }
+        .live-banner-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 24px; }
+        .live-banner-stat-label { font-size: 10px; opacity: 0.8; text-transform: uppercase; }
 
         /* Issues */
         .issue-item { padding: 14px; background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); margin-bottom: 10px; border-left: 3px solid var(--ws-warning); }
@@ -125,10 +158,15 @@
             .stat-value { font-size: 40px; }
             .arba-stats { gap: 48px; }
             .arba-stat-value { font-size: 42px; }
+            .data-table { font-size: 13px; }
+            .data-table th { font-size: 11px; padding: 12px 8px; }
+            .data-table td { padding: 14px 8px; }
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card, .stat-card, .arba-banner { animation: fadeIn 0.4s ease forwards; }
+        .card, .stat-card, .arba-banner, .live-banner { animation: fadeIn 0.4s ease forwards; }
+        
+        .scroll-table { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
     </style>
 </head>
 <body>
@@ -178,17 +216,269 @@
                 <div class="stat-value">95%</div>
                 <div class="stat-label">Smart-T vs ARBA</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">Точность счёта</div>
+            <div class="stat-card live">
+                <div class="stat-value">892</div>
+                <div class="stat-label">Live матчей</div>
             </div>
+        </div>
+
+        <!-- Daily Breakdown -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📅</div>
+                <h2 class="card-title">Разбивка по дням недели</h2>
+            </div>
+            <div class="scroll-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>День</th>
+                            <th class="arba-col">ARBA</th>
+                            <th>Enetpulse</th>
+                            <th>Rustat</th>
+                            <th>Smart-T</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Чт, 09.01</td>
+                            <td class="arba-cell">156</td>
+                            <td>87 <span class="warning">(56%)</span></td>
+                            <td>142 <span class="highlight">(91%)</span></td>
+                            <td>148 <span class="highlight">(95%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Пт, 10.01</td>
+                            <td class="arba-cell">412</td>
+                            <td>379 <span class="highlight">(92%)</span></td>
+                            <td>385 <span class="highlight">(93%)</span></td>
+                            <td>398 <span class="highlight">(97%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Сб, 11.01</td>
+                            <td class="arba-cell">348</td>
+                            <td>295 <span class="warning">(85%)</span></td>
+                            <td>318 <span class="highlight">(91%)</span></td>
+                            <td>335 <span class="highlight">(96%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Вс, 12.01</td>
+                            <td class="arba-cell">52</td>
+                            <td>37 <span class="warning">(71%)</span></td>
+                            <td>45 <span class="warning">(87%)</span></td>
+                            <td>46 <span class="warning">(88%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Пн, 13.01</td>
+                            <td class="arba-cell">118</td>
+                            <td>95 <span class="warning">(81%)</span></td>
+                            <td>108 <span class="highlight">(92%)</span></td>
+                            <td>112 <span class="highlight">(95%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Вт, 14.01</td>
+                            <td class="arba-cell">168</td>
+                            <td>139 <span class="warning">(83%)</span></td>
+                            <td>152 <span class="highlight">(90%)</span></td>
+                            <td>158 <span class="highlight">(94%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ср, 15.01</td>
+                            <td class="arba-cell">92</td>
+                            <td>76 <span class="warning">(83%)</span></td>
+                            <td>85 <span class="highlight">(92%)</span></td>
+                            <td>88 <span class="highlight">(96%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Чт, 16.01</td>
+                            <td class="arba-cell">104</td>
+                            <td>111 <span class="highlight">(107%)</span></td>
+                            <td>85 <span class="warning">(82%)</span></td>
+                            <td>93 <span class="warning">(89%)</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>ИТОГО</td>
+                            <td class="arba-cell">1,450</td>
+                            <td>1,219 <span class="warning">(84%)</span></td>
+                            <td>1,320 <span class="highlight">(91%)</span></td>
+                            <td>1,378 <span class="highlight">(95%)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size: 11px; color: var(--ws-text-tertiary); margin-top: 12px;">
+                * В скобках — процент покрытия относительно ARBA
+            </p>
+        </div>
+
+        <!-- LIVE Section -->
+        <div class="live-banner">
+            <div class="live-banner-left">
+                <div class="live-dot"></div>
+                <h3>LIVE Статистика</h3>
+            </div>
+            <div class="live-banner-stats">
+                <div class="live-banner-stat">
+                    <div class="live-banner-stat-value">892</div>
+                    <div class="live-banner-stat-label">Live в ARBA</div>
+                </div>
+                <div class="live-banner-stat">
+                    <div class="live-banner-stat-value">61%</div>
+                    <div class="live-banner-stat-label">От всех матчей</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIVE Daily Breakdown -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon live">🔴</div>
+                <h2 class="card-title">LIVE матчи по дням</h2>
+            </div>
+            <div class="scroll-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>День</th>
+                            <th class="live-col">ARBA Live</th>
+                            <th>Enetpulse</th>
+                            <th>Rustat</th>
+                            <th>Smart-T</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Чт, 09.01</td>
+                            <td class="live-cell">98</td>
+                            <td>72 <span class="warning">(73%)</span></td>
+                            <td>92 <span class="highlight">(94%)</span></td>
+                            <td>95 <span class="highlight">(97%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Пт, 10.01</td>
+                            <td class="live-cell">268</td>
+                            <td>245 <span class="highlight">(91%)</span></td>
+                            <td>251 <span class="highlight">(94%)</span></td>
+                            <td>262 <span class="highlight">(98%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Сб, 11.01</td>
+                            <td class="live-cell">215</td>
+                            <td>186 <span class="warning">(87%)</span></td>
+                            <td>198 <span class="highlight">(92%)</span></td>
+                            <td>208 <span class="highlight">(97%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Вс, 12.01</td>
+                            <td class="live-cell">32</td>
+                            <td>24 <span class="warning">(75%)</span></td>
+                            <td>28 <span class="warning">(88%)</span></td>
+                            <td>30 <span class="highlight">(94%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Пн, 13.01</td>
+                            <td class="live-cell">74</td>
+                            <td>58 <span class="warning">(78%)</span></td>
+                            <td>68 <span class="highlight">(92%)</span></td>
+                            <td>71 <span class="highlight">(96%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Вт, 14.01</td>
+                            <td class="live-cell">102</td>
+                            <td>85 <span class="warning">(83%)</span></td>
+                            <td>94 <span class="highlight">(92%)</span></td>
+                            <td>98 <span class="highlight">(96%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ср, 15.01</td>
+                            <td class="live-cell">56</td>
+                            <td>45 <span class="warning">(80%)</span></td>
+                            <td>51 <span class="highlight">(91%)</span></td>
+                            <td>54 <span class="highlight">(96%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Чт, 16.01</td>
+                            <td class="live-cell">47</td>
+                            <td>52 <span class="highlight">(111%)</span></td>
+                            <td>42 <span class="warning">(89%)</span></td>
+                            <td>44 <span class="highlight">(94%)</span></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>ИТОГО LIVE</td>
+                            <td class="live-cell">892</td>
+                            <td>767 <span class="warning">(86%)</span></td>
+                            <td>824 <span class="highlight">(92%)</span></td>
+                            <td>862 <span class="highlight">(97%)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- LIVE Coverage Stats -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon live">📊</div>
+                <h2 class="card-title">LIVE покрытие vs ARBA</h2>
+            </div>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Провайдер</th>
+                        <th>Live матчей</th>
+                        <th>% от ARBA Live</th>
+                        <th>Задержка</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="arba-row">
+                        <td class="provider-name">⭐ ARBA (эталон)</td>
+                        <td>892</td>
+                        <td>100%</td>
+                        <td><span class="badge badge-arba">Базовый</span></td>
+                    </tr>
+                    <tr>
+                        <td class="provider-name">Smart-Tables</td>
+                        <td>862</td>
+                        <td>
+                            <div class="coverage-bar">
+                                <div class="coverage-track"><div class="coverage-fill high" style="width: 97%"></div></div>
+                                <span class="coverage-value">97%</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-success">+2 сек</span></td>
+                    </tr>
+                    <tr>
+                        <td class="provider-name">Rustat</td>
+                        <td>824</td>
+                        <td>
+                            <div class="coverage-bar">
+                                <div class="coverage-track"><div class="coverage-fill high" style="width: 92%"></div></div>
+                                <span class="coverage-value">92%</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-warning">+8 сек</span></td>
+                    </tr>
+                    <tr>
+                        <td class="provider-name">Enetpulse</td>
+                        <td>767</td>
+                        <td>
+                            <div class="coverage-bar">
+                                <div class="coverage-track"><div class="coverage-fill medium" style="width: 86%"></div></div>
+                                <span class="coverage-value">86%</span>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-success">+3 сек</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- Coverage vs ARBA -->
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📊</div>
-                <h2 class="card-title">Покрытие относительно ARBA</h2>
+                <h2 class="card-title">Общее покрытие относительно ARBA</h2>
             </div>
             <table class="compare-table">
                 <thead>
@@ -286,168 +576,6 @@
             </div>
         </div>
 
-        <!-- Category Coverage -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon">🗂️</div>
-                <h2 class="card-title">Покрытие по категориям (% от ARBA)</h2>
-            </div>
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Категория (в ARBA)</th>
-                        <th>Enetpulse</th>
-                        <th>Rustat</th>
-                        <th>Smart-T</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Топ-5 лиг Европы</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Вторые дивизионы</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Кубки (FA Cup, Copa del Rey и др.)</td>
-                        <td><span class="badge badge-success">98%</span></td>
-                        <td><span class="badge badge-warning">85%</span></td>
-                        <td><span class="badge badge-success">96%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Молодёжные (U21, U19, Primavera)</td>
-                        <td><span class="badge badge-error">45%</span></td>
-                        <td><span class="badge badge-success">92%</span></td>
-                        <td><span class="badge badge-warning">78%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Товарищеские матчи</td>
-                        <td><span class="badge badge-error">0%</span></td>
-                        <td><span class="badge badge-success">95%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Южная Америка (Бразилия, Аргентина)</td>
-                        <td><span class="badge badge-warning">62%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">98%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Азия (Саудовская лига, J-League)</td>
-                        <td><span class="badge badge-success">95%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Низшие лиги (3-4 дивизионы)</td>
-                        <td><span class="badge badge-warning">70%</span></td>
-                        <td><span class="badge badge-warning">75%</span></td>
-                        <td><span class="badge badge-warning">82%</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Data Accuracy -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon">✅</div>
-                <h2 class="card-title">Точность данных (совпадение с ARBA)</h2>
-            </div>
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Метрика</th>
-                        <th>Enetpulse</th>
-                        <th>Rustat</th>
-                        <th>Smart-T</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Финальный счёт</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Счёт по таймам</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">99.8%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Время начала матча</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-warning">94%</span></td>
-                        <td><span class="badge badge-success">99%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Название команд</td>
-                        <td><span class="badge badge-success">98%</span></td>
-                        <td><span class="badge badge-success">95%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                    <tr>
-                        <td>Статус матча (live/finished)</td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                        <td><span class="badge badge-success">100%</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Response Times -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon">⚡</div>
-                <h2 class="card-title">Скорость обновления (vs ARBA)</h2>
-            </div>
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Провайдер</th>
-                        <th>Задержка от ARBA</th>
-                        <th>Время ответа API</th>
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="arba-row">
-                        <td class="provider-name">⭐ ARBA</td>
-                        <td>—</td>
-                        <td>85ms</td>
-                        <td><span class="badge badge-arba">Эталон</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Smart-Tables</td>
-                        <td>+2 сек</td>
-                        <td>95ms</td>
-                        <td><span class="badge badge-success">✓ Отлично</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Enetpulse</td>
-                        <td>+3 сек</td>
-                        <td>120ms</td>
-                        <td><span class="badge badge-success">✓ Хорошо</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Rustat</td>
-                        <td>+8 сек</td>
-                        <td>340ms</td>
-                        <td><span class="badge badge-warning">⚠️ Медленно</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
         <!-- Summary -->
         <div class="card">
             <div class="card-header">
@@ -459,8 +587,8 @@
                     <tr>
                         <th>Провайдер</th>
                         <th>Покрытие</th>
+                        <th>Live</th>
                         <th>Точность</th>
-                        <th>Скорость</th>
                         <th>Итого</th>
                     </tr>
                 </thead>
@@ -468,29 +596,26 @@
                     <tr>
                         <td class="provider-name">🥇 Smart-Tables</td>
                         <td>95%</td>
+                        <td>97%</td>
                         <td>100%</td>
-                        <td>98%</td>
                         <td><strong style="color: var(--ws-success)">97%</strong></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥈 Rustat</td>
                         <td>91%</td>
+                        <td>92%</td>
                         <td>99%</td>
-                        <td>75%</td>
-                        <td><strong style="color: var(--ws-success)">90%</strong></td>
+                        <td><strong style="color: var(--ws-success)">93%</strong></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥉 Enetpulse</td>
                         <td>84%</td>
+                        <td>86%</td>
                         <td>100%</td>
-                        <td>95%</td>
-                        <td><strong style="color: var(--ws-warning)">89%</strong></td>
+                        <td><strong style="color: var(--ws-warning)">88%</strong></td>
                     </tr>
                 </tbody>
             </table>
-            <p style="font-size: 11px; color: var(--ws-text-tertiary); margin-top: 12px; text-align: center;">
-                Формула: Итого = (Покрытие × 0.4) + (Точность × 0.4) + (Скорость × 0.2)
-            </p>
         </div>
 
         <!-- Recommendations -->
@@ -503,29 +628,22 @@
                 <li class="checklist-item">
                     <div class="checklist-icon">1</div>
                     <div class="checklist-content">
-                        <div class="checklist-title">Enetpulse: добавить молодёжные турниры</div>
-                        <div class="checklist-desc">Отсутствует 55% матчей из ARBA в категории U21/U19. Потеря ~77 матчей/неделю</div>
+                        <div class="checklist-title">Enetpulse: добавить молодёжные и товарищеские</div>
+                        <div class="checklist-desc">Потеря 231 матча/неделю (16% от ARBA). Критично для Live — теряем 125 матчей</div>
                     </div>
                 </li>
                 <li class="checklist-item">
                     <div class="checklist-icon">2</div>
                     <div class="checklist-content">
-                        <div class="checklist-title">Enetpulse: добавить товарищеские</div>
-                        <div class="checklist-desc">0% покрытия товарищеских матчей из ARBA. Потеря ~87 матчей/неделю</div>
+                        <div class="checklist-title">Rustat: уменьшить задержку Live</div>
+                        <div class="checklist-desc">Текущая задержка +8 сек от ARBA. Целевая: &lt;5 сек</div>
                     </div>
                 </li>
                 <li class="checklist-item">
                     <div class="checklist-icon">3</div>
                     <div class="checklist-content">
-                        <div class="checklist-title">Rustat: оптимизировать скорость</div>
-                        <div class="checklist-desc">Задержка +8 сек от ARBA. Целевая: &lt;5 сек</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">4</div>
-                    <div class="checklist-content">
                         <div class="checklist-title">Smart-Tables: добавить Primavera</div>
-                        <div class="checklist-desc">Italy Primavera отсутствует. Потеря ~24 матча/неделю</div>
+                        <div class="checklist-desc">Потеря 24 матча/неделю. Остальное покрытие отличное (97% Live)</div>
                     </div>
                 </li>
             </ul>
