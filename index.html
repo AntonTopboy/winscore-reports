@@ -32,8 +32,6 @@
             --ws-arba-bg: rgba(99, 102, 241, 0.1);
             --ws-live: #EF4444;
             --ws-live-bg: rgba(239, 68, 68, 0.1);
-            --napoli-blue: #12A0D7;
-            --argentina-blue: #75AADB;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -139,23 +137,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .meta-chip.arba { background: var(--ws-arba); color: white; font-weight: 600; }
-        
-        /* D10S Badge */
-        .d10s-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, var(--napoli-blue) 0%, var(--argentina-blue) 100%);
-            border-radius: var(--ws-radius-full);
-            font-size: 13px;
-            color: white;
-            font-weight: 700;
-            margin-top: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 4px 20px rgba(18, 160, 215, 0.4);
-        }
         
         .card { 
             background: var(--ws-bg-card); 
@@ -298,7 +279,6 @@
         }
         .footer-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 3px; color: white; }
         .footer-text { font-size: 12px; color: rgba(255,255,255,0.7); }
-        .footer-maradona { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 8px; }
 
         /* Responsive */
         @media (min-width: 640px) {
@@ -344,7 +324,6 @@
                 <span class="meta-chip">📅 09–16 января 2026</span>
                 <span class="meta-chip">📡 3 провайдера</span>
             </div>
-            <div class="d10s-badge">⚽ D10S Edition • Napoli</div>
         </header>
 
         <!-- ARBA Banner -->
@@ -813,7 +792,6 @@
                 <span>WINSCORE</span>
             </div>
             <div class="footer-text">Сравнение с ARBA • 09–16 января 2026</div>
-            <div class="footer-maradona">⚽ D10S • Quartieri Spagnoli, Napoli</div>
         </footer>
     </div>
     </div>
