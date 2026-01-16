@@ -36,12 +36,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, sans-serif; background: var(--ws-bg-primary); color: var(--ws-text-primary); line-height: 1.5; min-height: 100vh; }
         .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+        
+        /* Header with Logo */
         .header { text-align: center; padding: 24px 0 32px; }
-        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--ws-accent); margin-bottom: 4px; }
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
+        .logo-img { width: 48px; height: 48px; border-radius: 12px; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: var(--ws-accent); }
         .subtitle { font-size: 18px; font-weight: 600; color: var(--ws-text-primary); margin-bottom: 16px; }
         .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         .meta-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--ws-bg-card); border: 1px solid var(--ws-border); border-radius: var(--ws-radius-full); font-size: 12px; color: var(--ws-text-secondary); }
         .meta-chip.arba { background: var(--ws-arba-bg); border-color: var(--ws-arba); color: var(--ws-arba); font-weight: 600; }
+        
         .card { background: var(--ws-bg-card); border-radius: var(--ws-radius); padding: 20px; margin-bottom: 16px; box-shadow: var(--ws-shadow); border: 1px solid var(--ws-border); }
         .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
         .card-icon { width: 36px; height: 36px; border-radius: var(--ws-radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; background: var(--ws-accent-light); }
@@ -65,7 +70,6 @@
         .stat-card.success .stat-value { color: var(--ws-success); }
         .stat-card.warning .stat-value { color: var(--ws-warning); }
         .stat-card.live .stat-value { color: var(--ws-live); }
-        .stat-card.live { border-color: var(--ws-live-bg); }
 
         /* Tables */
         .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -114,16 +118,10 @@
         .badge-arba { background: var(--ws-arba-bg); color: var(--ws-arba); }
         .badge-live { background: var(--ws-live-bg); color: var(--ws-live); }
 
-        /* Live Banner */
-        .live-banner { background: linear-gradient(135deg, var(--ws-live), #F87171); border-radius: var(--ws-radius); padding: 16px 20px; margin-bottom: 16px; color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-        .live-banner-left { display: flex; align-items: center; gap: 12px; }
-        .live-dot { width: 12px; height: 12px; background: white; border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .live-banner h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; }
-        .live-banner-stats { display: flex; gap: 24px; }
-        .live-banner-stat { text-align: center; }
-        .live-banner-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 24px; }
-        .live-banner-stat-label { font-size: 10px; opacity: 0.8; text-transform: uppercase; }
+        /* Info Box */
+        .info-box { background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); padding: 14px 16px; margin-bottom: 16px; border-left: 3px solid var(--ws-arba); }
+        .info-box p { font-size: 13px; color: var(--ws-text-secondary); }
+        .info-box strong { color: var(--ws-text-primary); }
 
         /* Issues */
         .issue-item { padding: 14px; background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); margin-bottom: 10px; border-left: 3px solid var(--ws-warning); }
@@ -143,7 +141,9 @@
 
         /* Footer */
         .footer { text-align: center; padding: 24px 0; border-top: 1px solid var(--ws-border); margin-top: 16px; }
-        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--ws-text-tertiary); margin-bottom: 4px; }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px; }
+        .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+        .footer-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--ws-text-tertiary); }
         .footer-text { font-size: 11px; color: var(--ws-text-tertiary); }
 
         /* Responsive */
@@ -151,6 +151,7 @@
             .container { padding: 24px; }
             .header { padding: 32px 0 40px; }
             .logo { font-size: 36px; }
+            .logo-img { width: 56px; height: 56px; }
             .subtitle { font-size: 22px; }
             .card { padding: 24px; margin-bottom: 20px; }
             .card-title { font-size: 20px; }
@@ -164,16 +165,19 @@
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card, .stat-card, .arba-banner, .live-banner { animation: fadeIn 0.4s ease forwards; }
+        .card, .stat-card, .arba-banner { animation: fadeIn 0.4s ease forwards; }
         
         .scroll-table { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Header with Logo -->
         <header class="header">
-            <div class="logo">WINSCORE</div>
+            <div class="logo-container">
+                <img src="https://play-lh.googleusercontent.com/vWzIT9gX4bHLXluCvGnKu4253jHYxMvjPYWmQkPiSbqhVjGcO1F8xGhQd3aLtEuALw=w240-h480-rw" alt="WinScore" class="logo-img">
+                <span class="logo">WINSCORE</span>
+            </div>
             <h1 class="subtitle">Сравнение провайдеров с ARBA</h1>
             <div class="meta">
                 <span class="meta-chip arba">⭐ ARBA — эталон</span>
@@ -312,29 +316,17 @@
         </div>
 
         <!-- LIVE Section -->
-        <div class="live-banner">
-            <div class="live-banner-left">
-                <div class="live-dot"></div>
-                <h3>LIVE Статистика</h3>
-            </div>
-            <div class="live-banner-stats">
-                <div class="live-banner-stat">
-                    <div class="live-banner-stat-value">892</div>
-                    <div class="live-banner-stat-label">Live в ARBA</div>
-                </div>
-                <div class="live-banner-stat">
-                    <div class="live-banner-stat-value">61%</div>
-                    <div class="live-banner-stat-label">От всех матчей</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- LIVE Daily Breakdown -->
         <div class="card">
             <div class="card-header">
                 <div class="card-icon live">🔴</div>
-                <h2 class="card-title">LIVE матчи по дням</h2>
+                <h2 class="card-title">LIVE матчи</h2>
             </div>
+            
+            <!-- Info Box -->
+            <div class="info-box">
+                <p><strong>Что такое Live?</strong> Из 1,450 матчей в ARBA, <strong>892 матча (61%)</strong> имели Live-трансляцию — обновление счёта в реальном времени. Остальные <strong>39%</strong> — только финальные результаты без live-данных.</p>
+            </div>
+
             <div class="scroll-table">
                 <table class="data-table">
                     <thead>
@@ -418,7 +410,7 @@
         <!-- LIVE Coverage Stats -->
         <div class="card">
             <div class="card-header">
-                <div class="card-icon live">📊</div>
+                <div class="card-icon">📊</div>
                 <h2 class="card-title">LIVE покрытие vs ARBA</h2>
             </div>
             <table class="compare-table">
@@ -651,7 +643,10 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="footer-logo">WINSCORE</div>
+            <div class="footer-logo">
+                <img src="https://play-lh.googleusercontent.com/vWzIT9gX4bHLXluCvGnKu4253jHYxMvjPYWmQkPiSbqhVjGcO1F8xGhQd3aLtEuALw=w240-h480-rw" alt="WinScore">
+                <span>WINSCORE</span>
+            </div>
             <div class="footer-text">Сравнение с ARBA • 09–16 января 2026</div>
         </footer>
     </div>
