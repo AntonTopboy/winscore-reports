@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WinScore | Сравнение провайдеров с ARBA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Psychedelic Pop Art Background */
+        /* Boxing Match Background */
         body { 
             font-family: 'Inter', -apple-system, sans-serif; 
             color: var(--ws-text-primary); 
@@ -43,9 +43,11 @@
             min-height: 100vh;
             background: #1a0a2e;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Colorful graffiti/street art background */
+        /* Boxing ring at Madison Square Garden */
         body::before {
             content: '';
             position: fixed;
@@ -54,7 +56,7 @@
             right: 0;
             bottom: 0;
             z-index: 0;
-            background-image: url('https://images.unsplash.com/photo-1569017388730-020b5f80a004?w=1400&q=80');
+            background-image: url('https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=1400&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -92,39 +94,53 @@
             );
         }
         
-        .container { max-width: 800px; margin: 0 auto; padding: 16px; }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 12px; 
+        }
         
         /* Header with Logo */
-        .header { text-align: center; padding: 32px 0 40px; }
-        .logo-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; }
+        .header { 
+            text-align: center; 
+            padding: 24px 0 28px; 
+        }
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+        }
         
         /* SVG Logo with neon effect */
         .logo-icon {
-            width: 56px;
-            height: 56px;
+            width: 44px;
+            height: 44px;
             background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 50%, #FFFF00 100%);
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3);
             animation: neonPulse 2s ease-in-out infinite alternate;
+            flex-shrink: 0;
         }
         @keyframes neonPulse {
             from { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3); }
             to { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8), 0 0 80px rgba(0, 255, 255, 0.5); }
         }
         .logo-icon svg {
-            width: 34px;
-            height: 34px;
+            width: 26px;
+            height: 26px;
             fill: white;
             filter: drop-shadow(0 0 5px white);
         }
         
         .logo { 
             font-family: 'Bebas Neue', sans-serif; 
-            font-size: 38px; 
-            letter-spacing: 4px; 
+            font-size: 28px; 
+            letter-spacing: 3px; 
             background: linear-gradient(90deg, #FF00FF, #00FFFF, #FFFF00, #FF00FF);
             background-size: 300% 100%;
             -webkit-background-clip: text;
@@ -139,25 +155,31 @@
             50% { background-position: 100% 50%; }
         }
         .subtitle { 
-            font-size: 20px; 
+            font-size: 16px; 
             font-weight: 600; 
             color: white; 
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
         }
-        .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .meta { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 8px; 
+        }
         .meta-chip { 
             display: inline-flex; 
             align-items: center; 
-            gap: 6px; 
-            padding: 8px 14px; 
+            gap: 4px; 
+            padding: 6px 10px; 
             background: rgba(255,255,255,0.95); 
             border: none; 
             border-radius: var(--ws-radius-full); 
-            font-size: 12px; 
+            font-size: 11px; 
             font-weight: 500;
             color: var(--ws-text-secondary); 
             box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 20px rgba(255, 0, 255, 0.2);
+            white-space: nowrap;
         }
         .meta-chip.arba { 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
@@ -168,91 +190,242 @@
         .card { 
             background: var(--ws-bg-card); 
             border-radius: var(--ws-radius); 
-            padding: 24px; 
-            margin-bottom: 20px; 
+            padding: 16px; 
+            margin-bottom: 14px; 
             box-shadow: var(--ws-shadow), 0 0 30px rgba(128, 0, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
-        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-        .card-icon { width: 40px; height: 40px; border-radius: var(--ws-radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); }
+        .card-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 14px; 
+        }
+        .card-icon { 
+            width: 36px; 
+            height: 36px; 
+            border-radius: var(--ws-radius-sm); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 16px; 
+            background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); 
+            flex-shrink: 0;
+        }
         .card-icon.live { background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(255,100,0,0.1)); }
-        .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.5px; }
+        .card-title { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 17px; 
+            letter-spacing: 0.5px; 
+        }
         
         /* ARBA Banner with gradient */
         .arba-banner { 
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
             border-radius: var(--ws-radius); 
-            padding: 24px; 
-            margin-bottom: 20px; 
+            padding: 20px 16px; 
+            margin-bottom: 14px; 
             color: white; 
             text-align: center;
             box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4), 0 0 60px rgba(118, 75, 162, 0.3);
         }
-        .arba-banner h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; margin-bottom: 8px; }
-        .arba-banner p { font-size: 14px; opacity: 0.9; }
-        .arba-stats { display: flex; justify-content: center; gap: 40px; margin-top: 20px; flex-wrap: wrap; }
+        .arba-banner h2 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 20px; 
+            letter-spacing: 1px; 
+            margin-bottom: 6px; 
+        }
+        .arba-banner p { 
+            font-size: 12px; 
+            opacity: 0.9; 
+        }
+        .arba-stats { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            margin-top: 16px; 
+            flex-wrap: wrap; 
+        }
         .arba-stat { text-align: center; }
-        .arba-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-        .arba-stat-label { font-size: 11px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+        .arba-stat-value { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 28px; 
+            text-shadow: 0 0 20px rgba(255,255,255,0.5); 
+        }
+        .arba-stat-label { 
+            font-size: 10px; 
+            opacity: 0.8; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
 
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 20px; }
+        /* Stats Grid - Mobile first */
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 10px; 
+            margin-bottom: 14px; 
+        }
         .stat-card { 
             background: var(--ws-bg-card); 
             border-radius: var(--ws-radius); 
-            padding: 20px; 
+            padding: 14px 10px; 
             text-align: center; 
             box-shadow: var(--ws-shadow); 
             border: 1px solid rgba(255,255,255,0.1); 
         }
-        .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--ws-accent); line-height: 1; margin-bottom: 6px; }
-        .stat-label { font-size: 11px; color: var(--ws-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-value { 
+            font-family: 'Bebas Neue', sans-serif; 
+            font-size: 28px; 
+            color: var(--ws-accent); 
+            line-height: 1; 
+            margin-bottom: 4px; 
+        }
+        .stat-label { 
+            font-size: 10px; 
+            color: var(--ws-text-secondary); 
+            text-transform: uppercase; 
+            letter-spacing: 0.3px; 
+        }
         .stat-card.success .stat-value { color: var(--ws-success); }
         .stat-card.warning .stat-value { color: var(--ws-warning); }
         .stat-card.live .stat-value { color: var(--ws-live); }
 
-        /* Tables */
-        .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        .data-table th { text-align: center; padding: 12px 8px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 10px; text-transform: uppercase; color: var(--ws-text-secondary); letter-spacing: 0.5px; }
-        .data-table th:first-child { text-align: left; border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
-        .data-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; }
-        .data-table th.arba-col { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); color: #764ba2; }
-        .data-table th.live-col { background: var(--ws-live-bg); color: var(--ws-live); }
-        .data-table td { padding: 14px 8px; border-bottom: 1px solid var(--ws-border); text-align: center; }
-        .data-table td:first-child { text-align: left; font-weight: 500; }
+        /* Tables - Mobile optimized */
+        .scroll-table { 
+            overflow-x: auto; 
+            margin: 0 -8px; 
+            padding: 0 8px; 
+            -webkit-overflow-scrolling: touch;
+        }
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 11px; 
+            min-width: 480px;
+        }
+        .data-table th { 
+            text-align: center; 
+            padding: 10px 6px; 
+            background: var(--ws-bg-secondary); 
+            font-weight: 600; 
+            font-size: 9px; 
+            text-transform: uppercase; 
+            color: var(--ws-text-secondary); 
+            letter-spacing: 0.3px; 
+            white-space: nowrap;
+        }
+        .data-table th:first-child { 
+            text-align: left; 
+            border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); 
+        }
+        .data-table th:last-child { 
+            border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; 
+        }
+        .data-table th.arba-col { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); 
+            color: #764ba2; 
+        }
+        .data-table th.live-col { 
+            background: var(--ws-live-bg); 
+            color: var(--ws-live); 
+        }
+        .data-table td { 
+            padding: 10px 6px; 
+            border-bottom: 1px solid var(--ws-border); 
+            text-align: center; 
+            white-space: nowrap;
+        }
+        .data-table td:first-child { 
+            text-align: left; 
+            font-weight: 500; 
+        }
         .data-table tr:last-child td { border-bottom: none; }
-        .data-table .total-row { background: var(--ws-bg-secondary); font-weight: 700; }
+        .data-table .total-row { 
+            background: var(--ws-bg-secondary); 
+            font-weight: 700; 
+        }
         .data-table .total-row td { border-bottom: none; }
         .data-table .highlight { color: var(--ws-success); font-weight: 600; }
         .data-table .warning { color: var(--ws-warning); }
         .data-table .error { color: var(--ws-error); }
-        .data-table .arba-cell { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); color: #764ba2; font-weight: 600; }
+        .data-table .arba-cell { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); 
+            color: #764ba2; 
+            font-weight: 600; 
+        }
         .data-table .live-cell { color: var(--ws-live); font-weight: 600; }
 
-        /* Compare Table */
-        .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .compare-table th { text-align: left; padding: 14px 12px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 11px; text-transform: uppercase; color: var(--ws-text-secondary); }
-        .compare-table th:first-child { border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
-        .compare-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; text-align: center; }
-        .compare-table td { padding: 16px 12px; border-bottom: 1px solid var(--ws-border); }
+        /* Compare Table - Mobile optimized */
+        .compare-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 12px; 
+        }
+        .compare-table th { 
+            text-align: left; 
+            padding: 10px 8px; 
+            background: var(--ws-bg-secondary); 
+            font-weight: 600; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            color: var(--ws-text-secondary); 
+        }
+        .compare-table th:first-child { 
+            border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); 
+        }
+        .compare-table th:last-child { 
+            border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; 
+            text-align: center; 
+        }
+        .compare-table td { 
+            padding: 12px 8px; 
+            border-bottom: 1px solid var(--ws-border); 
+        }
         .compare-table td:last-child { text-align: center; }
         .compare-table tr:last-child td { border-bottom: none; }
-        .compare-table .provider-name { font-weight: 600; }
-        .compare-table .arba-row { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); }
+        .compare-table .provider-name { font-weight: 600; font-size: 11px; }
+        .compare-table .arba-row { 
+            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); 
+        }
         .compare-table .arba-row td { font-weight: 600; color: #764ba2; }
 
         /* Coverage bars */
-        .coverage-bar { display: flex; align-items: center; gap: 10px; }
-        .coverage-track { flex: 1; height: 10px; background: var(--ws-bg-secondary); border-radius: 5px; overflow: hidden; }
-        .coverage-fill { height: 100%; border-radius: 5px; }
+        .coverage-bar { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+        }
+        .coverage-track { 
+            flex: 1; 
+            height: 8px; 
+            background: var(--ws-bg-secondary); 
+            border-radius: 4px; 
+            overflow: hidden; 
+            min-width: 60px;
+        }
+        .coverage-fill { height: 100%; border-radius: 4px; }
         .coverage-fill.high { background: linear-gradient(90deg, #00c853, #69f0ae); }
         .coverage-fill.medium { background: linear-gradient(90deg, #ff9800, #ffcc02); }
         .coverage-fill.low { background: linear-gradient(90deg, #f44336, #ff5252); }
-        .coverage-value { font-weight: 600; font-size: 14px; min-width: 45px; }
+        .coverage-value { 
+            font-weight: 600; 
+            font-size: 12px; 
+            min-width: 38px; 
+            text-align: right;
+        }
 
         /* Badges */
-        .badge { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: var(--ws-radius-full); font-size: 11px; font-weight: 600; }
+        .badge { 
+            display: inline-flex; 
+            align-items: center; 
+            padding: 4px 8px; 
+            border-radius: var(--ws-radius-full); 
+            font-size: 10px; 
+            font-weight: 600; 
+            white-space: nowrap;
+        }
         .badge-success { background: rgba(0, 200, 83, 0.1); color: #00c853; }
         .badge-warning { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
         .badge-error { background: rgba(244, 67, 54, 0.1); color: #f44336; }
@@ -260,85 +433,193 @@
         .badge-live { background: var(--ws-live-bg); color: var(--ws-live); }
 
         /* Info Box */
-        .info-box { background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); padding: 16px 18px; margin-bottom: 20px; border-left: 4px solid #764ba2; }
-        .info-box p { font-size: 13px; color: var(--ws-text-secondary); line-height: 1.6; }
+        .info-box { 
+            background: var(--ws-bg-secondary); 
+            border-radius: var(--ws-radius-sm); 
+            padding: 12px 14px; 
+            margin-bottom: 14px; 
+            border-left: 4px solid #764ba2; 
+        }
+        .info-box p { 
+            font-size: 12px; 
+            color: var(--ws-text-secondary); 
+            line-height: 1.5; 
+        }
         .info-box strong { color: var(--ws-text-primary); }
 
         /* Issues */
-        .issue-item { padding: 16px; background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); margin-bottom: 12px; border-left: 4px solid var(--ws-warning); }
+        .issue-item { 
+            padding: 12px; 
+            background: var(--ws-bg-secondary); 
+            border-radius: var(--ws-radius-sm); 
+            margin-bottom: 10px; 
+            border-left: 4px solid var(--ws-warning); 
+        }
         .issue-item.error { border-left-color: var(--ws-error); }
-        .issue-item.success { border-left-color: var(--ws-success); background: rgba(0, 200, 83, 0.05); }
-        .issue-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
-        .issue-desc { font-size: 13px; color: var(--ws-text-secondary); }
+        .issue-item.success { 
+            border-left-color: var(--ws-success); 
+            background: rgba(0, 200, 83, 0.05); 
+        }
+        .issue-title { 
+            font-weight: 600; 
+            font-size: 12px; 
+            margin-bottom: 6px; 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: space-between; 
+            align-items: center; 
+            gap: 6px;
+        }
+        .issue-desc { 
+            font-size: 11px; 
+            color: var(--ws-text-secondary); 
+            line-height: 1.4;
+        }
 
         /* Checklist */
         .checklist { list-style: none; }
-        .checklist-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--ws-border); }
+        .checklist-item { 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 10px; 
+            padding: 12px 0; 
+            border-bottom: 1px solid var(--ws-border); 
+        }
         .checklist-item:last-child { border-bottom: none; }
-        .checklist-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); color: #764ba2; font-weight: 600; }
-        .checklist-content { flex: 1; }
-        .checklist-title { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
-        .checklist-desc { font-size: 12px; color: var(--ws-text-secondary); }
+        .checklist-icon { 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 11px; 
+            flex-shrink: 0; 
+            background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); 
+            color: #764ba2; 
+            font-weight: 600; 
+        }
+        .checklist-content { flex: 1; min-width: 0; }
+        .checklist-title { 
+            font-weight: 600; 
+            font-size: 12px; 
+            margin-bottom: 3px; 
+        }
+        .checklist-desc { 
+            font-size: 11px; 
+            color: var(--ws-text-secondary); 
+        }
 
         /* Footer */
         .footer { 
             text-align: center; 
-            padding: 32px 0; 
-            margin-top: 20px;
+            padding: 24px 16px; 
+            margin-top: 14px;
             background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));
             border-radius: var(--ws-radius);
             backdrop-filter: blur(10px);
         }
-        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+        .footer-logo { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px; 
+            margin-bottom: 10px; 
+        }
         .footer-logo-icon {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 100%);
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
         }
         .footer-logo-icon svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: white;
         }
         .footer-logo span { 
             font-family: 'Bebas Neue', sans-serif; 
-            font-size: 24px; 
-            letter-spacing: 3px; 
+            font-size: 20px; 
+            letter-spacing: 2px; 
             background: linear-gradient(90deg, #FF00FF, #00FFFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .footer-text { font-size: 12px; color: rgba(255,255,255,0.7); }
+        .footer-text { 
+            font-size: 11px; 
+            color: rgba(255,255,255,0.7); 
+        }
 
-        /* Responsive */
+        /* Desktop enhancements */
         @media (min-width: 640px) {
             .container { padding: 24px; }
             .header { padding: 40px 0 48px; }
-            .logo { font-size: 44px; }
+            .logo { font-size: 44px; letter-spacing: 4px; }
             .logo-icon { width: 64px; height: 64px; border-radius: 18px; }
             .logo-icon svg { width: 38px; height: 38px; }
-            .subtitle { font-size: 24px; }
-            .card { padding: 28px; margin-bottom: 24px; }
-            .card-title { font-size: 22px; }
-            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
-            .stat-value { font-size: 44px; }
-            .arba-stats { gap: 56px; }
+            .subtitle { font-size: 24px; margin-bottom: 20px; }
+            .meta { gap: 10px; }
+            .meta-chip { padding: 8px 14px; font-size: 12px; gap: 6px; }
+            .card { padding: 24px; margin-bottom: 20px; }
+            .card-header { gap: 12px; margin-bottom: 20px; }
+            .card-icon { width: 40px; height: 40px; font-size: 18px; }
+            .card-title { font-size: 20px; }
+            .arba-banner { padding: 24px; margin-bottom: 20px; }
+            .arba-banner h2 { font-size: 26px; margin-bottom: 8px; }
+            .arba-banner p { font-size: 14px; }
+            .arba-stats { gap: 56px; margin-top: 20px; }
             .arba-stat-value { font-size: 48px; }
-            .data-table { font-size: 13px; }
+            .arba-stat-label { font-size: 11px; letter-spacing: 1px; }
+            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+            .stat-card { padding: 20px; }
+            .stat-value { font-size: 44px; margin-bottom: 6px; }
+            .stat-label { font-size: 11px; letter-spacing: 0.5px; }
+            .data-table { font-size: 13px; min-width: auto; }
             .data-table th { font-size: 11px; padding: 14px 10px; }
-            .data-table td { padding: 16px 10px; }
+            .data-table td { padding: 14px 10px; }
+            .compare-table { font-size: 13px; }
+            .compare-table th { font-size: 11px; padding: 14px 12px; }
+            .compare-table td { padding: 16px 12px; }
+            .compare-table .provider-name { font-size: 13px; }
+            .coverage-track { min-width: 100px; height: 10px; }
+            .coverage-value { font-size: 14px; min-width: 45px; }
+            .badge { padding: 5px 10px; font-size: 11px; }
+            .info-box { padding: 16px 18px; margin-bottom: 20px; }
+            .info-box p { font-size: 13px; line-height: 1.6; }
+            .issue-item { padding: 16px; margin-bottom: 12px; }
+            .issue-title { font-size: 14px; }
+            .issue-desc { font-size: 13px; }
+            .checklist-item { gap: 12px; padding: 14px 0; }
+            .checklist-icon { width: 28px; height: 28px; font-size: 13px; }
+            .checklist-title { font-size: 14px; margin-bottom: 4px; }
+            .checklist-desc { font-size: 12px; }
+            .footer { padding: 32px; margin-top: 20px; }
+            .footer-logo { gap: 10px; margin-bottom: 12px; }
+            .footer-logo-icon { width: 32px; height: 32px; border-radius: 10px; }
+            .footer-logo-icon svg { width: 18px; height: 18px; }
+            .footer-logo span { font-size: 24px; letter-spacing: 3px; }
+            .footer-text { font-size: 12px; }
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(15px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
         .card, .stat-card, .arba-banner { animation: fadeIn 0.5s ease forwards; }
         
-        .scroll-table { overflow-x: auto; margin: 0 -4px; padding: 0 4px; }
+        /* Touch-friendly improvements */
+        @media (hover: none) {
+            .scroll-table { 
+                scrollbar-width: none; 
+                -ms-overflow-style: none; 
+            }
+            .scroll-table::-webkit-scrollbar { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -357,7 +638,7 @@
             <h1 class="subtitle">Сравнение провайдеров с ARBA</h1>
             <div class="meta">
                 <span class="meta-chip arba">⭐ ARBA — эталон</span>
-                <span class="meta-chip">📅 09–16 января 2026</span>
+                <span class="meta-chip">📅 09–16.01.2026</span>
                 <span class="meta-chip">📡 3 провайдера</span>
             </div>
         </header>
@@ -365,15 +646,15 @@
         <!-- ARBA Banner -->
         <div class="arba-banner">
             <h2>⭐ ARBA — Основной провайдер</h2>
-            <p>Все остальные провайдеры сравниваются с данными ARBA</p>
+            <p>Все провайдеры сравниваются с данными ARBA</p>
             <div class="arba-stats">
                 <div class="arba-stat">
                     <div class="arba-stat-value">1,450</div>
-                    <div class="arba-stat-label">Матчей за неделю</div>
+                    <div class="arba-stat-label">Матчей</div>
                 </div>
                 <div class="arba-stat">
                     <div class="arba-stat-value">100%</div>
-                    <div class="arba-stat-label">Базовое покрытие</div>
+                    <div class="arba-stat-label">Покрытие</div>
                 </div>
                 <div class="arba-stat">
                     <div class="arba-stat-value">52</div>
@@ -386,19 +667,19 @@
         <div class="stats-grid">
             <div class="stat-card success">
                 <div class="stat-value">84%</div>
-                <div class="stat-label">Enetpulse vs ARBA</div>
+                <div class="stat-label">Enetpulse</div>
             </div>
             <div class="stat-card success">
                 <div class="stat-value">91%</div>
-                <div class="stat-label">Rustat vs ARBA</div>
+                <div class="stat-label">Rustat</div>
             </div>
             <div class="stat-card success">
                 <div class="stat-value">95%</div>
-                <div class="stat-label">Smart-T vs ARBA</div>
+                <div class="stat-label">Smart-T</div>
             </div>
             <div class="stat-card live">
                 <div class="stat-value">892</div>
-                <div class="stat-label">Live матчей</div>
+                <div class="stat-label">Live</div>
             </div>
         </div>
 
@@ -406,7 +687,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📅</div>
-                <h2 class="card-title">Разбивка по дням недели</h2>
+                <h2 class="card-title">Разбивка по дням</h2>
             </div>
             <div class="scroll-table">
                 <table class="data-table">
@@ -414,9 +695,9 @@
                         <tr>
                             <th>День</th>
                             <th class="arba-col">ARBA</th>
-                            <th>Enetpulse</th>
+                            <th>Enet</th>
                             <th>Rustat</th>
-                            <th>Smart-T</th>
+                            <th>Smart</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -486,8 +767,8 @@
                     </tbody>
                 </table>
             </div>
-            <p style="font-size: 11px; color: var(--ws-text-tertiary); margin-top: 14px;">
-                * В скобках — процент покрытия относительно ARBA
+            <p style="font-size: 10px; color: var(--ws-text-tertiary); margin-top: 12px;">
+                * В скобках — % покрытия относительно ARBA
             </p>
         </div>
 
@@ -498,9 +779,8 @@
                 <h2 class="card-title">LIVE матчи</h2>
             </div>
             
-            <!-- Info Box -->
             <div class="info-box">
-                <p><strong>Что такое Live?</strong> Из 1,450 матчей в ARBA, <strong>892 матча (61%)</strong> имели Live-трансляцию — обновление счёта в реальном времени. Остальные <strong>39%</strong> — только финальные результаты без live-данных.</p>
+                <p><strong>Что такое Live?</strong> Из 1,450 матчей в ARBA, <strong>892 (61%)</strong> имели Live-трансляцию. Остальные <strong>39%</strong> — только финальные результаты.</p>
             </div>
 
             <div class="scroll-table">
@@ -508,10 +788,10 @@
                     <thead>
                         <tr>
                             <th>День</th>
-                            <th class="live-col">ARBA Live</th>
-                            <th>Enetpulse</th>
+                            <th class="live-col">ARBA</th>
+                            <th>Enet</th>
                             <th>Rustat</th>
-                            <th>Smart-T</th>
+                            <th>Smart</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -572,7 +852,7 @@
                             <td>44 <span class="highlight">(94%)</span></td>
                         </tr>
                         <tr class="total-row">
-                            <td>ИТОГО LIVE</td>
+                            <td>LIVE</td>
                             <td class="live-cell">892</td>
                             <td>767 <span class="warning">(86%)</span></td>
                             <td>824 <span class="highlight">(92%)</span></td>
@@ -587,56 +867,51 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📊</div>
-                <h2 class="card-title">LIVE покрытие vs ARBA</h2>
+                <h2 class="card-title">LIVE покрытие</h2>
             </div>
             <table class="compare-table">
                 <thead>
                     <tr>
                         <th>Провайдер</th>
-                        <th>Live матчей</th>
-                        <th>% от ARBA Live</th>
+                        <th>% от ARBA</th>
                         <th>Задержка</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="arba-row">
-                        <td class="provider-name">⭐ ARBA (эталон)</td>
-                        <td>892</td>
+                        <td class="provider-name">⭐ ARBA</td>
                         <td>100%</td>
                         <td><span class="badge badge-arba">Базовый</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">Smart-Tables</td>
-                        <td>862</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill high" style="width: 97%"></div></div>
                                 <span class="coverage-value">97%</span>
                             </div>
                         </td>
-                        <td><span class="badge badge-success">+2 сек</span></td>
+                        <td><span class="badge badge-success">+2с</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">Rustat</td>
-                        <td>824</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill high" style="width: 92%"></div></div>
                                 <span class="coverage-value">92%</span>
                             </div>
                         </td>
-                        <td><span class="badge badge-warning">+8 сек</span></td>
+                        <td><span class="badge badge-warning">+8с</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">Enetpulse</td>
-                        <td>767</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill medium" style="width: 86%"></div></div>
                                 <span class="coverage-value">86%</span>
                             </div>
                         </td>
-                        <td><span class="badge badge-success">+3 сек</span></td>
+                        <td><span class="badge badge-success">+3с</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -646,32 +921,29 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📊</div>
-                <h2 class="card-title">Общее покрытие относительно ARBA</h2>
+                <h2 class="card-title">Общее покрытие</h2>
             </div>
             <table class="compare-table">
                 <thead>
                     <tr>
                         <th>Провайдер</th>
-                        <th>Матчей</th>
-                        <th>Покрытие vs ARBA</th>
+                        <th>vs ARBA</th>
                         <th>Точность</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="arba-row">
-                        <td class="provider-name">⭐ ARBA (эталон)</td>
-                        <td>1,450</td>
+                        <td class="provider-name">⭐ ARBA</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill high" style="width: 100%"></div></div>
                                 <span class="coverage-value">100%</span>
                             </div>
                         </td>
-                        <td><span class="badge badge-arba">Базовый</span></td>
+                        <td><span class="badge badge-arba">Эталон</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">Smart-Tables</td>
-                        <td>1,378</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill high" style="width: 95%"></div></div>
@@ -682,7 +954,6 @@
                     </tr>
                     <tr>
                         <td class="provider-name">Rustat</td>
-                        <td>1,320</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill high" style="width: 91%"></div></div>
@@ -693,7 +964,6 @@
                     </tr>
                     <tr>
                         <td class="provider-name">Enetpulse</td>
-                        <td>1,219</td>
                         <td>
                             <div class="coverage-bar">
                                 <div class="coverage-track"><div class="coverage-fill medium" style="width: 84%"></div></div>
@@ -710,36 +980,36 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">❌</div>
-                <h2 class="card-title">Чего нет у провайдеров (есть в ARBA)</h2>
+                <h2 class="card-title">Чего нет у провайдеров</h2>
             </div>
             
             <div class="issue-item error">
                 <div class="issue-title">
-                    <span>Enetpulse — 231 матч отсутствует</span>
+                    <span>Enetpulse — 231 матч</span>
                     <span class="badge badge-error">-16%</span>
                 </div>
                 <div class="issue-desc">
-                    <strong>Нет:</strong> Club Friendlies (87), Copa SP Junior (42), Saudi Youth (35), AFC U23 (28), товарищеские Европа (39)
+                    Club Friendlies, Copa SP Junior, Saudi Youth, AFC U23, товарищеские
                 </div>
             </div>
 
             <div class="issue-item">
                 <div class="issue-title">
-                    <span>Rustat — 130 матчей отсутствует</span>
+                    <span>Rustat — 130 матчей</span>
                     <span class="badge badge-warning">-9%</span>
                 </div>
                 <div class="issue-desc">
-                    <strong>Нет:</strong> Часть кубковых (FA Trophy, Coupe de France R64), низшие лиги Германии (Oberliga)
+                    FA Trophy, Coupe de France R64, Oberliga
                 </div>
             </div>
 
             <div class="issue-item success">
                 <div class="issue-title">
-                    <span>Smart-Tables — 72 матча отсутствует</span>
+                    <span>Smart-Tables — 72 матча</span>
                     <span class="badge badge-success">-5%</span>
                 </div>
                 <div class="issue-desc">
-                    <strong>Нет:</strong> Italy Primavera (24), Egypt League Cup (18), низшие лиги (30)
+                    Italy Primavera, Egypt League Cup, низшие лиги
                 </div>
             </div>
         </div>
@@ -748,38 +1018,30 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📋</div>
-                <h2 class="card-title">Итоговый рейтинг (сравнение с ARBA)</h2>
+                <h2 class="card-title">Итоговый рейтинг</h2>
             </div>
             <table class="compare-table">
                 <thead>
                     <tr>
                         <th>Провайдер</th>
                         <th>Покрытие</th>
-                        <th>Live</th>
-                        <th>Точность</th>
                         <th>Итого</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="provider-name">🥇 Smart-Tables</td>
-                        <td>95%</td>
-                        <td>97%</td>
-                        <td>100%</td>
+                        <td>95% / 97% Live</td>
                         <td><strong style="color: #00c853">97%</strong></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥈 Rustat</td>
-                        <td>91%</td>
-                        <td>92%</td>
-                        <td>99%</td>
+                        <td>91% / 92% Live</td>
                         <td><strong style="color: #00c853">93%</strong></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥉 Enetpulse</td>
-                        <td>84%</td>
-                        <td>86%</td>
-                        <td>100%</td>
+                        <td>84% / 86% Live</td>
                         <td><strong style="color: #ff9800">88%</strong></td>
                     </tr>
                 </tbody>
@@ -796,22 +1058,22 @@
                 <li class="checklist-item">
                     <div class="checklist-icon">1</div>
                     <div class="checklist-content">
-                        <div class="checklist-title">Enetpulse: добавить молодёжные и товарищеские</div>
-                        <div class="checklist-desc">Потеря 231 матча/неделю (16% от ARBA). Критично для Live — теряем 125 матчей</div>
+                        <div class="checklist-title">Enetpulse: молодёжные и товарищеские</div>
+                        <div class="checklist-desc">-231 матч/неделю (16% от ARBA)</div>
                     </div>
                 </li>
                 <li class="checklist-item">
                     <div class="checklist-icon">2</div>
                     <div class="checklist-content">
                         <div class="checklist-title">Rustat: уменьшить задержку Live</div>
-                        <div class="checklist-desc">Текущая задержка +8 сек от ARBA. Целевая: &lt;5 сек</div>
+                        <div class="checklist-desc">Сейчас +8 сек. Цель: &lt;5 сек</div>
                     </div>
                 </li>
                 <li class="checklist-item">
                     <div class="checklist-icon">3</div>
                     <div class="checklist-content">
                         <div class="checklist-title">Smart-Tables: добавить Primavera</div>
-                        <div class="checklist-desc">Потеря 24 матча/неделю. Остальное покрытие отличное (97% Live)</div>
+                        <div class="checklist-desc">-24 матча/неделю</div>
                     </div>
                 </li>
             </ul>
@@ -827,7 +1089,7 @@
                 </div>
                 <span>WINSCORE</span>
             </div>
-            <div class="footer-text">Сравнение с ARBA • 09–16 января 2026</div>
+            <div class="footer-text">Сравнение с ARBA • 09–16.01.2026</div>
         </footer>
     </div>
     </div>
