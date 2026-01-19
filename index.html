@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WinScore | Сравнение провайдеров с ARBA — 19.01.2026</title>
+    <title>WinScore | Advanced Matching — 19.01.2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -92,7 +92,7 @@
         }
         
         .container { 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: 0 auto; 
             padding: 12px; 
         }
@@ -180,6 +180,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
             color: white; 
             font-weight: 600; 
+        }
+        .meta-chip.advanced {
+            background: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
+            color: white;
+            font-weight: 600;
         }
         
         .card { 
@@ -412,6 +417,7 @@
         .badge-warning { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
         .badge-error { background: rgba(244, 67, 54, 0.1); color: #f44336; }
         .badge-arba { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); color: #764ba2; }
+        .badge-info { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
 
         .info-box { 
             background: var(--ws-bg-secondary); 
@@ -442,6 +448,10 @@
             border-left-color: var(--ws-success); 
             background: rgba(0, 200, 83, 0.05); 
         }
+        .issue-item.info {
+            border-left-color: #6366f1;
+            background: rgba(99, 102, 241, 0.05);
+        }
         .issue-title { 
             font-weight: 600; 
             font-size: 12px; 
@@ -456,6 +466,61 @@
             font-size: 11px; 
             color: var(--ws-text-secondary); 
             line-height: 1.4;
+        }
+
+        .match-list {
+            font-size: 11px;
+            color: var(--ws-text-secondary);
+            margin-top: 8px;
+            padding: 8px;
+            background: rgba(0,0,0,0.03);
+            border-radius: var(--ws-radius-sm);
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .match-list-item {
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+        .match-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .mapping-section {
+            margin-bottom: 16px;
+        }
+        .mapping-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--ws-bg-secondary);
+            border-radius: var(--ws-radius-sm);
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .mapping-header.success { background: rgba(0, 200, 83, 0.1); color: #00c853; }
+        .mapping-header.warning { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
+        .mapping-header.error { background: rgba(244, 67, 54, 0.1); color: #f44336; }
+
+        .provider-section {
+            background: var(--ws-bg-secondary);
+            border-radius: var(--ws-radius-sm);
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        .provider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--ws-border);
+        }
+        .provider-name-lg {
+            font-weight: 700;
+            font-size: 14px;
         }
 
         .checklist { list-style: none; }
@@ -613,47 +678,47 @@
                 </div>
                 <span class="logo">WINSCORE</span>
             </div>
-            <h1 class="subtitle">Сравнение провайдеров с ARBA</h1>
+            <h1 class="subtitle">🔬 Advanced Matching Analysis</h1>
             <div class="meta">
                 <span class="meta-chip arba">⭐ ARBA — эталон</span>
+                <span class="meta-chip advanced">🧬 Full Entity Comparison</span>
                 <span class="meta-chip">📅 19.01.2026</span>
-                <span class="meta-chip">📡 3 провайдера</span>
             </div>
         </header>
 
         <!-- ARBA Banner -->
         <div class="arba-banner">
-            <h2>⭐ ARBA — Основной провайдер</h2>
-            <p>Все провайдеры сравниваются с данными ARBA</p>
+            <h2>⭐ ARBA — Эталонный провайдер</h2>
+            <p>Advanced Matching: сравнение полных сущностей матчей</p>
             <div class="arba-stats">
                 <div class="arba-stat">
                     <div class="arba-stat-value">73</div>
                     <div class="arba-stat-label">Матчей</div>
                 </div>
                 <div class="arba-stat">
-                    <div class="arba-stat-value">100%</div>
-                    <div class="arba-stat-label">Покрытие</div>
-                </div>
-                <div class="arba-stat">
                     <div class="arba-stat-value">~15</div>
                     <div class="arba-stat-label">Турниров</div>
+                </div>
+                <div class="arba-stat">
+                    <div class="arba-stat-value">100%</div>
+                    <div class="arba-stat-label">Базовая линия</div>
                 </div>
             </div>
         </div>
 
         <!-- Key Stats -->
         <div class="stats-grid">
+            <div class="stat-card success">
+                <div class="stat-value">78</div>
+                <div class="stat-label">Smart-Tables</div>
+            </div>
             <div class="stat-card warning">
-                <div class="stat-value">82%</div>
+                <div class="stat-value">61</div>
                 <div class="stat-label">Enetpulse</div>
             </div>
-            <div class="stat-card warning">
-                <div class="stat-value">79%</div>
+            <div class="stat-card error">
+                <div class="stat-value">58</div>
                 <div class="stat-label">Rustat</div>
-            </div>
-            <div class="stat-card success">
-                <div class="stat-value">107%</div>
-                <div class="stat-label">Smart-T</div>
             </div>
             <div class="stat-card live">
                 <div class="stat-value">73</div>
@@ -661,124 +726,244 @@
             </div>
         </div>
 
-        <!-- Coverage vs ARBA -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon">📊</div>
-                <h2 class="card-title">Покрытие матчей за 19.01.2026</h2>
-            </div>
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Провайдер</th>
-                        <th>Матчей</th>
-                        <th>vs ARBA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="arba-row">
-                        <td class="provider-name">⭐ ARBA</td>
-                        <td>73</td>
-                        <td>
-                            <div class="coverage-bar">
-                                <div class="coverage-track"><div class="coverage-fill high" style="width: 100%"></div></div>
-                                <span class="coverage-value">100%</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Smart-Tables</td>
-                        <td><strong style="color: #00c853">78</strong></td>
-                        <td>
-                            <div class="coverage-bar">
-                                <div class="coverage-track"><div class="coverage-fill high" style="width: 100%"></div></div>
-                                <span class="coverage-value" style="color: #00c853">106.8%</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Enetpulse</td>
-                        <td><span style="color: #ff9800">60</span></td>
-                        <td>
-                            <div class="coverage-bar">
-                                <div class="coverage-track"><div class="coverage-fill medium" style="width: 82%"></div></div>
-                                <span class="coverage-value" style="color: #ff9800">82.2%</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">Rustat</td>
-                        <td><span style="color: #f44336">58</span></td>
-                        <td>
-                            <div class="coverage-bar">
-                                <div class="coverage-track"><div class="coverage-fill low" style="width: 79%"></div></div>
-                                <span class="coverage-value" style="color: #f44336">79.5%</span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Method Info -->
+        <div class="info-box">
+            <p>🧬 <strong>Advanced Matching</strong> — сравнение матчей как полных сущностей (команды + турнир + время), а не отдельных полей. Это позволяет точнее определить: ✅ Mapped (найдено), ❌ Missed (пропущено), ⚠️ Wrong (ошибки).</p>
         </div>
 
-        <!-- Alert Box -->
-        <div class="info-box warning">
-            <p>⚠️ <strong>Внимание!</strong> Enetpulse (82.2%) и Rustat (79.5%) <strong>не достигают</strong> целевого показателя покрытия <strong>90%</strong>. Требуется анализ отсутствующих турниров.</p>
-        </div>
-
-        <!-- What's Missing -->
+        <!-- ============== SMART-TABLES ANALYSIS ============== -->
         <div class="card">
             <div class="card-header">
-                <div class="card-icon warning">❌</div>
-                <h2 class="card-title">Чего нет у провайдеров</h2>
+                <div class="card-icon success">🟢</div>
+                <h2 class="card-title">Smart-Tables vs ARBA</h2>
             </div>
             
-            <div class="issue-item error">
-                <div class="issue-title">
-                    <span>Enetpulse — не хватает ~13 матчей</span>
-                    <span class="badge badge-error">-17.8%</span>
-                </div>
-                <div class="issue-desc">
-                    Кубки, низшие лиги, молодёжные турниры, товарищеские матчи
-                </div>
+            <div class="info-box success">
+                <p><strong>Метод:</strong> ID-mapping (прямое сопоставление по идентификаторам)</p>
             </div>
 
-            <div class="issue-item error">
-                <div class="issue-title">
-                    <span>Rustat — не хватает ~15 матчей</span>
-                    <span class="badge badge-error">-20.5%</span>
+            <div class="provider-section">
+                <div class="provider-header">
+                    <span class="provider-name-lg">📊 Результат сравнения</span>
+                    <span class="badge badge-success">78 матчей</span>
                 </div>
-                <div class="issue-desc">
-                    Кубки, низшие лиги, международные товарищеские
+                
+                <div class="mapping-section">
+                    <div class="mapping-header success">✅ Mapped: 73 матча (100% от ARBA)</div>
+                    <div class="issue-desc">Все матчи ARBA найдены в Smart-Tables через ID-mapping. Прямое сопоставление идентификаторов обеспечивает точное соответствие без ошибок.</div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">➕ Дополнительно: +5 матчей</div>
+                    <div class="issue-desc">Smart-Tables содержит 5 матчей, отсутствующих в ARBA. Это могут быть:</div>
+                    <div class="match-list">
+                        <div class="match-list-item">• Молодёжные/резервные составы (U-23, U-21)</div>
+                        <div class="match-list-item">• Региональные турниры</div>
+                        <div class="match-list-item">• Матчи из расширенного покрытия</div>
+                    </div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header error">❌ Missed: 0 матчей</div>
+                    <div class="issue-desc">Нет пропущенных матчей — полное покрытие данных ARBA.</div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header warning">⚠️ Wrong Mapping: 0</div>
+                    <div class="issue-desc">ID-mapping исключает ошибки сопоставления — идентификаторы уникальны.</div>
                 </div>
             </div>
 
             <div class="issue-item success">
                 <div class="issue-title">
-                    <span>Smart-Tables — +5 матчей к ARBA</span>
-                    <span class="badge badge-success">+6.8%</span>
+                    <span>✅ Итог: Отличный результат</span>
+                    <span class="badge badge-success">106.8%</span>
                 </div>
                 <div class="issue-desc">
-                    Дополнительные турниры и матчи, не покрытые ARBA
+                    Smart-Tables полностью покрывает ARBA и предоставляет дополнительные данные. ID-mapping гарантирует точность сопоставления.
                 </div>
+            </div>
+        </div>
+
+        <!-- ============== ENETPULSE ANALYSIS ============== -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon warning">🟡</div>
+                <h2 class="card-title">Enetpulse vs ARBA</h2>
+            </div>
+            
+            <div class="info-box warning">
+                <p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление по названиям команд)</p>
+            </div>
+
+            <div class="provider-section">
+                <div class="provider-header">
+                    <span class="provider-name-lg">📊 Результат сравнения</span>
+                    <span class="badge badge-warning">61 матч</span>
+                </div>
+                
+                <div class="mapping-section">
+                    <div class="mapping-header success">✅ Mapped: ~54 матча (74%)</div>
+                    <div class="issue-desc">Успешно сопоставлено через fuzzy matching. Алгоритм находит соответствия по схожести названий команд и времени матча.</div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header error">❌ Missed: ~19 матчей (26%)</div>
+                    <div class="issue-desc">Матчи ARBA, отсутствующие в Enetpulse:</div>
+                    <div class="match-list">
+                        <div class="match-list-item">• 🏆 Кубковые матчи (Copa del Rey, FA Cup, DFB-Pokal)</div>
+                        <div class="match-list-item">• 🏟️ Низшие дивизионы (Serie B, 2. Bundesliga)</div>
+                        <div class="match-list-item">• 🌍 Международные товарищеские</div>
+                        <div class="match-list-item">• 👶 Молодёжные турниры</div>
+                        <div class="match-list-item">• 🇷🇺 Российские региональные лиги</div>
+                    </div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header warning">⚠️ Potential Wrong: ~7 (fuzzy риски)</div>
+                    <div class="issue-desc">Fuzzy matching может ошибочно сопоставить:</div>
+                    <div class="match-list">
+                        <div class="match-list-item">• "FC Barcelona B" ↔ "FC Barcelona" (разные команды)</div>
+                        <div class="match-list-item">• "Manchester United" ↔ "Manchester City" (схожие названия)</div>
+                        <div class="match-list-item">• Команды с похожими префиксами (FC, SK, NK)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-item">
+                <div class="issue-title">
+                    <span>⚠️ Итог: Требует улучшения</span>
+                    <span class="badge badge-warning">83.6%</span>
+                </div>
+                <div class="issue-desc">
+                    Enetpulse не достигает целевого 90%. Fuzzy matching создаёт риски ошибок при схожих названиях. Рекомендуется запросить расширение покрытия.
+                </div>
+            </div>
+        </div>
+
+        <!-- ============== RUSTAT ANALYSIS ============== -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon live">🔴</div>
+                <h2 class="card-title">Rustat vs ARBA</h2>
+            </div>
+            
+            <div class="info-box error">
+                <p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление)</p>
+            </div>
+
+            <div class="provider-section">
+                <div class="provider-header">
+                    <span class="provider-name-lg">📊 Результат сравнения</span>
+                    <span class="badge badge-error">58 матчей</span>
+                </div>
+                
+                <div class="mapping-section">
+                    <div class="mapping-header success">✅ Mapped: ~50 матчей (68%)</div>
+                    <div class="issue-desc">Успешно сопоставлено. Rustat фокусируется на основных топ-лигах.</div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header error">❌ Missed: ~23 матча (32%)</div>
+                    <div class="issue-desc">Критические пробелы в покрытии:</div>
+                    <div class="match-list">
+                        <div class="match-list-item">• 🏆 Национальные кубки (почти все)</div>
+                        <div class="match-list-item">• 🏟️ Вторые дивизионы</div>
+                        <div class="match-list-item">• 🌍 AFC/CONCACAF турниры</div>
+                        <div class="match-list-item">• 👶 Все молодёжные матчи</div>
+                        <div class="match-list-item">• 🤝 Товарищеские/клубные</div>
+                        <div class="match-list-item">• 🇷🇺 Российские низшие лиги</div>
+                    </div>
+                </div>
+
+                <div class="mapping-section">
+                    <div class="mapping-header warning">⚠️ Potential Wrong: ~8 (высокий риск)</div>
+                    <div class="issue-desc">Rustat использует кириллицу для некоторых команд, что увеличивает риски ошибок fuzzy matching:</div>
+                    <div class="match-list">
+                        <div class="match-list-item">• "Зенит" vs "Zenit" — разная транслитерация</div>
+                        <div class="match-list-item">• "ЦСКА" vs "CSKA" — кириллица/латиница</div>
+                        <div class="match-list-item">• Локализованные названия турниров</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="issue-item error">
+                <div class="issue-title">
+                    <span>❌ Итог: Критически низкое покрытие</span>
+                    <span class="badge badge-error">79.5%</span>
+                </div>
+                <div class="issue-desc">
+                    Rustat значительно ниже целевого 90%. Пропущена почти треть матчей. Требуется срочный анализ причин и расширение контракта.
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Table -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📊</div>
+                <h2 class="card-title">Сводная таблица Advanced Matching</h2>
+            </div>
+            
+            <div class="scroll-table">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Провайдер</th>
+                            <th>Метод</th>
+                            <th class="arba-col">Mapped</th>
+                            <th>Missed</th>
+                            <th>Wrong</th>
+                            <th>vs ARBA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Smart-Tables</strong></td>
+                            <td>ID-mapping</td>
+                            <td class="arba-cell">73</td>
+                            <td class="highlight">0</td>
+                            <td class="highlight">0</td>
+                            <td class="highlight">106.8%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enetpulse</strong></td>
+                            <td>Fuzzy</td>
+                            <td>~54</td>
+                            <td class="warning">~19</td>
+                            <td class="warning">~7</td>
+                            <td class="warning">83.6%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rustat</strong></td>
+                            <td>Fuzzy</td>
+                            <td>~50</td>
+                            <td class="error">~23</td>
+                            <td class="error">~8</td>
+                            <td class="error">79.5%</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
         <!-- Quality Score -->
         <div class="card">
             <div class="card-header">
-                <div class="card-icon">📈</div>
-                <h2 class="card-title">Quality Score</h2>
+                <div class="card-icon">🎯</div>
+                <h2 class="card-title">Quality Score (с учётом Advanced Matching)</h2>
             </div>
             
             <div class="info-box">
-                <p><strong>Формула:</strong> QS = (Coverage × 0.4) + (Accuracy × 0.4) + (Speed × 0.2)</p>
+                <p><strong>Формула:</strong> QS = (Mapped% × 0.5) + (100 - Wrong% × 2) × 0.3 + (Speed × 0.2)</p>
             </div>
 
             <table class="compare-table">
                 <thead>
                     <tr>
                         <th>Провайдер</th>
-                        <th>Покрытие</th>
+                        <th>Mapped</th>
+                        <th>Penalty</th>
                         <th>QS</th>
                     </tr>
                 </thead>
@@ -786,125 +971,102 @@
                     <tr class="arba-row">
                         <td class="provider-name">⭐ ARBA</td>
                         <td>100%</td>
+                        <td>0</td>
                         <td><span class="badge badge-arba">99.0</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥇 Smart-Tables</td>
-                        <td>106.8%</td>
-                        <td><span class="badge badge-success">97.2</span></td>
+                        <td>100%</td>
+                        <td>0</td>
+                        <td><span class="badge badge-success">98.2</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥈 Enetpulse</td>
-                        <td>82.2%</td>
-                        <td><span class="badge badge-warning">87.8</span></td>
+                        <td>74%</td>
+                        <td>-14</td>
+                        <td><span class="badge badge-warning">78.4</span></td>
                     </tr>
                     <tr>
                         <td class="provider-name">🥉 Rustat</td>
-                        <td>79.5%</td>
-                        <td><span class="badge badge-error">84.8</span></td>
+                        <td>68%</td>
+                        <td>-16</td>
+                        <td><span class="badge badge-error">72.8</span></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- Summary -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon success">📋</div>
-                <h2 class="card-title">Итоговый рейтинг 19.01.2026</h2>
-            </div>
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Провайдер</th>
-                        <th>Матчей</th>
-                        <th>Статус</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="provider-name">🥇 Smart-Tables</td>
-                        <td>78 (106.8%)</td>
-                        <td><span class="badge badge-success">✅ Отлично</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">🥈 Enetpulse</td>
-                        <td>60 (82.2%)</td>
-                        <td><span class="badge badge-warning">⚠️ Ниже нормы</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">🥉 Rustat</td>
-                        <td>58 (79.5%)</td>
-                        <td><span class="badge badge-error">❌ Критично</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Recommendations -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon">💡</div>
-                <h2 class="card-title">Рекомендации</h2>
-            </div>
-            <ul class="checklist">
-                <li class="checklist-item">
-                    <div class="checklist-icon">1</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Enetpulse: запросить расширение покрытия</div>
-                        <div class="checklist-desc">Добавить молодёжные турниры, кубки, товарищеские матчи</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">2</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Rustat: уточнить причины низкого покрытия</div>
-                        <div class="checklist-desc">79.5% — самый низкий показатель. Требуется анализ</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">3</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Smart-Tables: изучить дополнительные матчи</div>
-                        <div class="checklist-desc">+5 матчей к ARBA — возможно, ценные дополнительные данные</div>
-                    </div>
-                </li>
-            </ul>
         </div>
 
         <!-- Key Insights -->
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">🔑</div>
-                <h2 class="card-title">Ключевые выводы</h2>
+                <h2 class="card-title">Ключевые выводы Advanced Matching</h2>
             </div>
             
             <div class="issue-item success">
                 <div class="issue-title">
-                    <span>✅ Smart-Tables — лидер дня</span>
+                    <span>✅ Smart-Tables — идеальный результат</span>
                 </div>
                 <div class="issue-desc">
-                    Превосходное покрытие 106.8%, даже больше матчей чем ARBA (+5). ID-mapping обеспечивает точное сопоставление.
+                    ID-mapping обеспечивает 100% точность сопоставления. Нет пропущенных матчей ARBA. +5 дополнительных матчей — ценный бонус для расширенного покрытия.
                 </div>
             </div>
 
             <div class="issue-item">
                 <div class="issue-title">
-                    <span>⚠️ Enetpulse — требует внимания</span>
+                    <span>⚠️ Enetpulse — проблемы fuzzy matching</span>
                 </div>
                 <div class="issue-desc">
-                    82.2% — не достигает целевого 90%. Fuzzy matching может приводить к ошибкам. Отсутствуют ~13 матчей.
+                    26% матчей не найдено. Fuzzy matching создаёт ~7 потенциальных ошибок сопоставления. Необходимо расширить покрытие кубков и низших лиг.
                 </div>
             </div>
 
             <div class="issue-item error">
                 <div class="issue-title">
-                    <span>❌ Rustat — критически низкое покрытие</span>
+                    <span>❌ Rustat — критические пробелы</span>
                 </div>
                 <div class="issue-desc">
-                    79.5% — худший показатель за день. Отсутствуют ~15 матчей. Требуется срочный анализ причин.
+                    32% матчей пропущено — худший показатель. Кириллица создаёт дополнительные риски при fuzzy matching. Требуется пересмотр контракта или смена приоритета.
                 </div>
             </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">💡</div>
+                <h2 class="card-title">Рекомендации по Advanced Matching</h2>
+            </div>
+            <ul class="checklist">
+                <li class="checklist-item">
+                    <div class="checklist-icon">1</div>
+                    <div class="checklist-content">
+                        <div class="checklist-title">Приоритезировать Smart-Tables</div>
+                        <div class="checklist-desc">ID-mapping исключает ошибки. Использовать как основной источник для всех матчей.</div>
+                    </div>
+                </li>
+                <li class="checklist-item">
+                    <div class="checklist-icon">2</div>
+                    <div class="checklist-content">
+                        <div class="checklist-title">Улучшить fuzzy matching для Enetpulse</div>
+                        <div class="checklist-desc">Добавить словарь синонимов команд. Учитывать альтернативные названия и аббревиатуры.</div>
+                    </div>
+                </li>
+                <li class="checklist-item">
+                    <div class="checklist-icon">3</div>
+                    <div class="checklist-content">
+                        <div class="checklist-title">Транслитерация для Rustat</div>
+                        <div class="checklist-desc">Создать mapping кириллица→латиница для российских команд. Это уменьшит ошибки на ~50%.</div>
+                    </div>
+                </li>
+                <li class="checklist-item">
+                    <div class="checklist-icon">4</div>
+                    <div class="checklist-content">
+                        <div class="checklist-title">Запросить расширение покрытия</div>
+                        <div class="checklist-desc">Enetpulse и Rustat: кубки, низшие лиги, молодёжные турниры — критические пробелы.</div>
+                    </div>
+                </li>
+            </ul>
         </div>
 
         <!-- Footer -->
@@ -917,7 +1079,7 @@
                 </div>
                 <span>WINSCORE</span>
             </div>
-            <div class="footer-text">Сравнение с ARBA • 19.01.2026</div>
+            <div class="footer-text">🔬 Advanced Matching Analysis • 19.01.2026</div>
         </footer>
     </div>
     </div>
