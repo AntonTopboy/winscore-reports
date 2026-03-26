@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WinScore | Advanced Matching — 19.01.2026</title>
+    <title>WinScore | Advanced Matching — 26.03.2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -34,1052 +34,267 @@
             --ws-live-bg: rgba(239, 68, 68, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', -apple-system, sans-serif; 
-            color: var(--ws-text-primary); 
-            line-height: 1.5; 
-            min-height: 100vh;
-            background: #1a0a2e;
-            position: relative;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Old_Trafford_inside_20060726_1.jpg/1280px-Old_Trafford_inside_20060726_1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 0, 128, 0.3) 0%,
-                rgba(128, 0, 255, 0.3) 25%,
-                rgba(0, 200, 255, 0.3) 50%,
-                rgba(255, 200, 0, 0.3) 75%,
-                rgba(255, 0, 128, 0.3) 100%
-            );
-            mix-blend-mode: overlay;
-        }
-        
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            min-height: 100vh;
-            background: linear-gradient(
-                180deg,
-                rgba(26, 10, 46, 0.85) 0%,
-                rgba(26, 10, 46, 0.7) 50%,
-                rgba(26, 10, 46, 0.85) 100%
-            );
-        }
-        
-        .container { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 12px; 
-        }
-        
-        .header { 
-            text-align: center; 
-            padding: 24px 0 28px; 
-        }
-        .logo-container { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 10px; 
-            margin-bottom: 12px; 
-        }
-        
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 50%, #FFFF00 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3);
-            animation: neonPulse 2s ease-in-out infinite alternate;
-            flex-shrink: 0;
-        }
-        @keyframes neonPulse {
-            from { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3); }
-            to { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8), 0 0 80px rgba(0, 255, 255, 0.5); }
-        }
-        .logo-icon svg {
-            width: 26px;
-            height: 26px;
-            fill: white;
-            filter: drop-shadow(0 0 5px white);
-        }
-        
-        .logo { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 28px; 
-            letter-spacing: 3px; 
-            background: linear-gradient(90deg, #FF00FF, #00FFFF, #FFFF00, #FF00FF);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientMove 3s ease infinite;
-            text-shadow: none;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5));
-        }
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        .subtitle { 
-            font-size: 16px; 
-            font-weight: 600; 
-            color: white; 
-            margin-bottom: 16px;
-            text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-        }
-        .meta { 
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: center; 
-            gap: 8px; 
-        }
-        .meta-chip { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 4px; 
-            padding: 6px 10px; 
-            background: rgba(255,255,255,0.95); 
-            border: none; 
-            border-radius: var(--ws-radius-full); 
-            font-size: 11px; 
-            font-weight: 500;
-            color: var(--ws-text-secondary); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 20px rgba(255, 0, 255, 0.2);
-            white-space: nowrap;
-        }
-        .meta-chip.arba { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-            color: white; 
-            font-weight: 600; 
-        }
-        .meta-chip.advanced {
-            background: linear-gradient(135deg, #00c853 0%, #69f0ae 100%);
-            color: white;
-            font-weight: 600;
-        }
-        
-        .card { 
-            background: var(--ws-bg-card); 
-            border-radius: var(--ws-radius); 
-            padding: 16px; 
-            margin-bottom: 14px; 
-            box-shadow: var(--ws-shadow), 0 0 30px rgba(128, 0, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        .card-header { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            margin-bottom: 14px; 
-        }
-        .card-icon { 
-            width: 36px; 
-            height: 36px; 
-            border-radius: var(--ws-radius-sm); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 16px; 
-            background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); 
-            flex-shrink: 0;
-        }
+        body { font-family: 'Inter', -apple-system, sans-serif; color: var(--ws-text-primary); line-height: 1.5; min-height: 100vh; background: #1a0a2e; position: relative; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Old_Trafford_inside_20060726_1.jpg/1280px-Old_Trafford_inside_20060726_1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 0; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3) 0%, rgba(128, 0, 255, 0.3) 25%, rgba(0, 200, 255, 0.3) 50%, rgba(255, 200, 0, 0.3) 75%, rgba(255, 0, 128, 0.3) 100%); mix-blend-mode: overlay; }
+        .page-wrapper { position: relative; z-index: 1; min-height: 100vh; background: linear-gradient(180deg, rgba(26, 10, 46, 0.85) 0%, rgba(26, 10, 46, 0.7) 50%, rgba(26, 10, 46, 0.85) 100%); }
+        .container { max-width: 900px; margin: 0 auto; padding: 12px; }
+        .header { text-align: center; padding: 24px 0 28px; }
+        .logo-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+        .logo-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 50%, #FFFF00 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3); animation: neonPulse 2s ease-in-out infinite alternate; flex-shrink: 0; }
+        @keyframes neonPulse { from { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3); } to { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8), 0 0 80px rgba(0, 255, 255, 0.5); } }
+        .logo-icon svg { width: 26px; height: 26px; fill: white; filter: drop-shadow(0 0 5px white); }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; background: linear-gradient(90deg, #FF00FF, #00FFFF, #FFFF00, #FF00FF); background-size: 300% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientMove 3s ease infinite; text-shadow: none; filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5)); }
+        @keyframes gradientMove { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .subtitle { font-size: 16px; font-weight: 600; color: white; margin-bottom: 16px; text-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
+        .meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .meta-chip { display: inline-flex; align-items: center; gap: 4px; padding: 6px 10px; background: rgba(255,255,255,0.95); border: none; border-radius: var(--ws-radius-full); font-size: 11px; font-weight: 500; color: var(--ws-text-secondary); box-shadow: 0 4px 15px rgba(0,0,0,0.2), 0 0 20px rgba(255, 0, 255, 0.2); white-space: nowrap; }
+        .meta-chip.arba { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; font-weight: 600; }
+        .meta-chip.advanced { background: linear-gradient(135deg, #00c853 0%, #69f0ae 100%); color: white; font-weight: 600; }
+        .card { background: var(--ws-bg-card); border-radius: var(--ws-radius); padding: 16px; margin-bottom: 14px; box-shadow: var(--ws-shadow), 0 0 30px rgba(128, 0, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .card-icon { width: 36px; height: 36px; border-radius: var(--ws-radius-sm); display: flex; align-items: center; justify-content: center; font-size: 16px; background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); flex-shrink: 0; }
         .card-icon.live { background: linear-gradient(135deg, rgba(255,0,0,0.1), rgba(255,100,0,0.1)); }
         .card-icon.warning { background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(255,200,0,0.1)); }
         .card-icon.success { background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(0,255,100,0.1)); }
-        .card-title { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 17px; 
-            letter-spacing: 0.5px; 
-        }
-        
-        .arba-banner { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
-            border-radius: var(--ws-radius); 
-            padding: 20px 16px; 
-            margin-bottom: 14px; 
-            color: white; 
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4), 0 0 60px rgba(118, 75, 162, 0.3);
-        }
-        .arba-banner h2 { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 20px; 
-            letter-spacing: 1px; 
-            margin-bottom: 6px; 
-        }
-        .arba-banner p { 
-            font-size: 12px; 
-            opacity: 0.9; 
-        }
-        .arba-stats { 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-            margin-top: 16px; 
-            flex-wrap: wrap; 
-        }
+        .card-title { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 0.5px; }
+        .arba-banner { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); border-radius: var(--ws-radius); padding: 20px 16px; margin-bottom: 14px; color: white; text-align: center; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4), 0 0 60px rgba(118, 75, 162, 0.3); }
+        .arba-banner h2 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; margin-bottom: 6px; }
+        .arba-banner p { font-size: 12px; opacity: 0.9; }
+        .arba-stats { display: flex; justify-content: center; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
         .arba-stat { text-align: center; }
-        .arba-stat-value { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 28px; 
-            text-shadow: 0 0 20px rgba(255,255,255,0.5); 
-        }
-        .arba-stat-label { 
-            font-size: 10px; 
-            opacity: 0.8; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
-        }
-
-        .stats-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px; 
-            margin-bottom: 14px; 
-        }
-        .stat-card { 
-            background: var(--ws-bg-card); 
-            border-radius: var(--ws-radius); 
-            padding: 14px 10px; 
-            text-align: center; 
-            box-shadow: var(--ws-shadow); 
-            border: 1px solid rgba(255,255,255,0.1); 
-        }
-        .stat-value { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 28px; 
-            color: var(--ws-accent); 
-            line-height: 1; 
-            margin-bottom: 4px; 
-        }
-        .stat-label { 
-            font-size: 10px; 
-            color: var(--ws-text-secondary); 
-            text-transform: uppercase; 
-            letter-spacing: 0.3px; 
-        }
+        .arba-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+        .arba-stat-label { font-size: 10px; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
+        .stat-card { background: var(--ws-bg-card); border-radius: var(--ws-radius); padding: 14px 10px; text-align: center; box-shadow: var(--ws-shadow); border: 1px solid rgba(255,255,255,0.1); }
+        .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--ws-accent); line-height: 1; margin-bottom: 4px; }
+        .stat-label { font-size: 10px; color: var(--ws-text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
         .stat-card.success .stat-value { color: var(--ws-success); }
         .stat-card.warning .stat-value { color: var(--ws-warning); }
         .stat-card.error .stat-value { color: var(--ws-error); }
         .stat-card.live .stat-value { color: var(--ws-live); }
-
-        .scroll-table { 
-            overflow-x: auto; 
-            margin: 0 -8px; 
-            padding: 0 8px; 
-            -webkit-overflow-scrolling: touch;
-        }
-        .data-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            font-size: 11px; 
-            min-width: 320px;
-        }
-        .data-table th { 
-            text-align: center; 
-            padding: 10px 6px; 
-            background: var(--ws-bg-secondary); 
-            font-weight: 600; 
-            font-size: 9px; 
-            text-transform: uppercase; 
-            color: var(--ws-text-secondary); 
-            letter-spacing: 0.3px; 
-            white-space: nowrap;
-        }
-        .data-table th:first-child { 
-            text-align: left; 
-            border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); 
-        }
-        .data-table th:last-child { 
-            border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; 
-        }
-        .data-table th.arba-col { 
-            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); 
-            color: #764ba2; 
-        }
-        .data-table td { 
-            padding: 10px 6px; 
-            border-bottom: 1px solid var(--ws-border); 
-            text-align: center; 
-            white-space: nowrap;
-        }
-        .data-table td:first-child { 
-            text-align: left; 
-            font-weight: 500; 
-        }
+        .scroll-table { overflow-x: auto; margin: 0 -8px; padding: 0 8px; -webkit-overflow-scrolling: touch; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 320px; }
+        .data-table th { text-align: center; padding: 10px 6px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 9px; text-transform: uppercase; color: var(--ws-text-secondary); letter-spacing: 0.3px; white-space: nowrap; }
+        .data-table th:first-child { text-align: left; border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
+        .data-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; }
+        .data-table th.arba-col { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); color: #764ba2; }
+        .data-table td { padding: 10px 6px; border-bottom: 1px solid var(--ws-border); text-align: center; white-space: nowrap; }
+        .data-table td:first-child { text-align: left; font-weight: 500; }
         .data-table tr:last-child td { border-bottom: none; }
         .data-table .highlight { color: var(--ws-success); font-weight: 600; }
         .data-table .warning { color: var(--ws-warning); }
         .data-table .error { color: var(--ws-error); }
-        .data-table .arba-cell { 
-            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); 
-            color: #764ba2; 
-            font-weight: 600; 
-        }
-
-        .compare-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            font-size: 12px; 
-        }
-        .compare-table th { 
-            text-align: left; 
-            padding: 10px 8px; 
-            background: var(--ws-bg-secondary); 
-            font-weight: 600; 
-            font-size: 10px; 
-            text-transform: uppercase; 
-            color: var(--ws-text-secondary); 
-        }
-        .compare-table th:first-child { 
-            border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); 
-        }
-        .compare-table th:last-child { 
-            border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; 
-            text-align: center; 
-        }
-        .compare-table td { 
-            padding: 12px 8px; 
-            border-bottom: 1px solid var(--ws-border); 
-        }
+        .data-table .arba-cell { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); color: #764ba2; font-weight: 600; }
+        .compare-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .compare-table th { text-align: left; padding: 10px 8px; background: var(--ws-bg-secondary); font-weight: 600; font-size: 10px; text-transform: uppercase; color: var(--ws-text-secondary); }
+        .compare-table th:first-child { border-radius: var(--ws-radius-sm) 0 0 var(--ws-radius-sm); }
+        .compare-table th:last-child { border-radius: 0 var(--ws-radius-sm) var(--ws-radius-sm) 0; text-align: center; }
+        .compare-table td { padding: 12px 8px; border-bottom: 1px solid var(--ws-border); }
         .compare-table td:last-child { text-align: center; }
         .compare-table tr:last-child td { border-bottom: none; }
         .compare-table .provider-name { font-weight: 600; font-size: 11px; }
-        .compare-table .arba-row { 
-            background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); 
-        }
+        .compare-table .arba-row { background: linear-gradient(135deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1)); }
         .compare-table .arba-row td { font-weight: 600; color: #764ba2; }
-
-        .coverage-bar { 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-        }
-        .coverage-track { 
-            flex: 1; 
-            height: 8px; 
-            background: var(--ws-bg-secondary); 
-            border-radius: 4px; 
-            overflow: hidden; 
-            min-width: 60px;
-        }
-        .coverage-fill { height: 100%; border-radius: 4px; }
-        .coverage-fill.high { background: linear-gradient(90deg, #00c853, #69f0ae); }
-        .coverage-fill.medium { background: linear-gradient(90deg, #ff9800, #ffcc02); }
-        .coverage-fill.low { background: linear-gradient(90deg, #f44336, #ff5252); }
-        .coverage-value { 
-            font-weight: 600; 
-            font-size: 12px; 
-            min-width: 45px; 
-            text-align: right;
-        }
-
-        .badge { 
-            display: inline-flex; 
-            align-items: center; 
-            padding: 4px 8px; 
-            border-radius: var(--ws-radius-full); 
-            font-size: 10px; 
-            font-weight: 600; 
-            white-space: nowrap;
-        }
+        .badge { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: var(--ws-radius-full); font-size: 10px; font-weight: 600; white-space: nowrap; }
         .badge-success { background: rgba(0, 200, 83, 0.1); color: #00c853; }
         .badge-warning { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
         .badge-error { background: rgba(244, 67, 54, 0.1); color: #f44336; }
         .badge-arba { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); color: #764ba2; }
         .badge-info { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
-
-        .info-box { 
-            background: var(--ws-bg-secondary); 
-            border-radius: var(--ws-radius-sm); 
-            padding: 12px 14px; 
-            margin-bottom: 14px; 
-            border-left: 4px solid #764ba2; 
-        }
-        .info-box p { 
-            font-size: 12px; 
-            color: var(--ws-text-secondary); 
-            line-height: 1.5; 
-        }
+        .info-box { background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); padding: 12px 14px; margin-bottom: 14px; border-left: 4px solid #764ba2; }
+        .info-box p { font-size: 12px; color: var(--ws-text-secondary); line-height: 1.5; }
         .info-box strong { color: var(--ws-text-primary); }
         .info-box.warning { border-left-color: var(--ws-warning); }
         .info-box.error { border-left-color: var(--ws-error); }
         .info-box.success { border-left-color: var(--ws-success); }
-
-        .issue-item { 
-            padding: 12px; 
-            background: var(--ws-bg-secondary); 
-            border-radius: var(--ws-radius-sm); 
-            margin-bottom: 10px; 
-            border-left: 4px solid var(--ws-warning); 
-        }
+        .issue-item { padding: 12px; background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); margin-bottom: 10px; border-left: 4px solid var(--ws-warning); }
         .issue-item.error { border-left-color: var(--ws-error); }
-        .issue-item.success { 
-            border-left-color: var(--ws-success); 
-            background: rgba(0, 200, 83, 0.05); 
-        }
-        .issue-item.info {
-            border-left-color: #6366f1;
-            background: rgba(99, 102, 241, 0.05);
-        }
-        .issue-title { 
-            font-weight: 600; 
-            font-size: 12px; 
-            margin-bottom: 6px; 
-            display: flex; 
-            flex-wrap: wrap;
-            justify-content: space-between; 
-            align-items: center; 
-            gap: 6px;
-        }
-        .issue-desc { 
-            font-size: 11px; 
-            color: var(--ws-text-secondary); 
-            line-height: 1.4;
-        }
-
-        .match-list {
-            font-size: 11px;
-            color: var(--ws-text-secondary);
-            margin-top: 8px;
-            padding: 8px;
-            background: rgba(0,0,0,0.03);
-            border-radius: var(--ws-radius-sm);
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .match-list-item {
-            padding: 4px 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.1);
-        }
-        .match-list-item:last-child {
-            border-bottom: none;
-        }
-
-        .mapping-section {
-            margin-bottom: 16px;
-        }
-        .mapping-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            background: var(--ws-bg-secondary);
-            border-radius: var(--ws-radius-sm);
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 12px;
-        }
+        .issue-item.success { border-left-color: var(--ws-success); background: rgba(0, 200, 83, 0.05); }
+        .issue-item.info { border-left-color: #6366f1; background: rgba(99, 102, 241, 0.05); }
+        .issue-title { font-weight: 600; font-size: 12px; margin-bottom: 6px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px; }
+        .issue-desc { font-size: 11px; color: var(--ws-text-secondary); line-height: 1.4; }
+        .match-list { font-size: 11px; color: var(--ws-text-secondary); margin-top: 8px; padding: 8px; background: rgba(0,0,0,0.03); border-radius: var(--ws-radius-sm); max-height: 150px; overflow-y: auto; }
+        .match-list-item { padding: 4px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
+        .match-list-item:last-child { border-bottom: none; }
+        .mapping-section { margin-bottom: 16px; }
+        .mapping-header { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); margin-bottom: 8px; font-weight: 600; font-size: 12px; }
         .mapping-header.success { background: rgba(0, 200, 83, 0.1); color: #00c853; }
         .mapping-header.warning { background: rgba(255, 152, 0, 0.1); color: #ff9800; }
         .mapping-header.error { background: rgba(244, 67, 54, 0.1); color: #f44336; }
-
-        .provider-section {
-            background: var(--ws-bg-secondary);
-            border-radius: var(--ws-radius-sm);
-            padding: 12px;
-            margin-bottom: 12px;
-        }
-        .provider-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--ws-border);
-        }
-        .provider-name-lg {
-            font-weight: 700;
-            font-size: 14px;
-        }
-
+        .provider-section { background: var(--ws-bg-secondary); border-radius: var(--ws-radius-sm); padding: 12px; margin-bottom: 12px; }
+        .provider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--ws-border); }
+        .provider-name-lg { font-weight: 700; font-size: 14px; }
         .checklist { list-style: none; }
-        .checklist-item { 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 10px; 
-            padding: 12px 0; 
-            border-bottom: 1px solid var(--ws-border); 
-        }
+        .checklist-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--ws-border); }
         .checklist-item:last-child { border-bottom: none; }
-        .checklist-icon { 
-            width: 24px; 
-            height: 24px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 11px; 
-            flex-shrink: 0; 
-            background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); 
-            color: #764ba2; 
-            font-weight: 600; 
-        }
+        .checklist-icon { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1)); color: #764ba2; font-weight: 600; }
         .checklist-content { flex: 1; min-width: 0; }
-        .checklist-title { 
-            font-weight: 600; 
-            font-size: 12px; 
-            margin-bottom: 3px; 
-        }
-        .checklist-desc { 
-            font-size: 11px; 
-            color: var(--ws-text-secondary); 
-        }
-
-        .footer { 
-            text-align: center; 
-            padding: 24px 16px; 
-            margin-top: 14px;
-            background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));
-            border-radius: var(--ws-radius);
-            backdrop-filter: blur(10px);
-        }
-        .footer-logo { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-            margin-bottom: 10px; 
-        }
-        .footer-logo-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-        }
-        .footer-logo-icon svg {
-            width: 16px;
-            height: 16px;
-            fill: white;
-        }
-        .footer-logo span { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: 20px; 
-            letter-spacing: 2px; 
-            background: linear-gradient(90deg, #FF00FF, #00FFFF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .footer-text { 
-            font-size: 11px; 
-            color: rgba(255,255,255,0.7); 
-        }
-
+        .checklist-title { font-weight: 600; font-size: 12px; margin-bottom: 3px; }
+        .checklist-desc { font-size: 11px; color: var(--ws-text-secondary); }
+        .footer { text-align: center; padding: 24px 16px; margin-top: 14px; background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3)); border-radius: var(--ws-radius); backdrop-filter: blur(10px); }
+        .footer-logo { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; }
+        .footer-logo-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #FF00FF 0%, #00FFFF 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); }
+        .footer-logo-icon svg { width: 16px; height: 16px; fill: white; }
+        .footer-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; background: linear-gradient(90deg, #FF00FF, #00FFFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .footer-text { font-size: 11px; color: rgba(255,255,255,0.7); }
         @media (min-width: 640px) {
-            .container { padding: 24px; }
-            .header { padding: 40px 0 48px; }
-            .logo { font-size: 44px; letter-spacing: 4px; }
-            .logo-icon { width: 64px; height: 64px; border-radius: 18px; }
-            .logo-icon svg { width: 38px; height: 38px; }
-            .subtitle { font-size: 24px; margin-bottom: 20px; }
-            .meta { gap: 10px; }
-            .meta-chip { padding: 8px 14px; font-size: 12px; gap: 6px; }
-            .card { padding: 24px; margin-bottom: 20px; }
-            .card-header { gap: 12px; margin-bottom: 20px; }
-            .card-icon { width: 40px; height: 40px; font-size: 18px; }
-            .card-title { font-size: 20px; }
-            .arba-banner { padding: 24px; margin-bottom: 20px; }
-            .arba-banner h2 { font-size: 26px; margin-bottom: 8px; }
-            .arba-banner p { font-size: 14px; }
-            .arba-stats { gap: 56px; margin-top: 20px; }
-            .arba-stat-value { font-size: 48px; }
-            .arba-stat-label { font-size: 11px; letter-spacing: 1px; }
-            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
-            .stat-card { padding: 20px; }
-            .stat-value { font-size: 44px; margin-bottom: 6px; }
-            .stat-label { font-size: 11px; letter-spacing: 0.5px; }
-            .data-table { font-size: 13px; min-width: auto; }
-            .data-table th { font-size: 11px; padding: 14px 10px; }
-            .data-table td { padding: 14px 10px; }
-            .compare-table { font-size: 13px; }
-            .compare-table th { font-size: 11px; padding: 14px 12px; }
-            .compare-table td { padding: 16px 12px; }
-            .compare-table .provider-name { font-size: 13px; }
-            .coverage-track { min-width: 100px; height: 10px; }
-            .coverage-value { font-size: 14px; min-width: 45px; }
-            .badge { padding: 5px 10px; font-size: 11px; }
-            .info-box { padding: 16px 18px; margin-bottom: 20px; }
-            .info-box p { font-size: 13px; line-height: 1.6; }
-            .issue-item { padding: 16px; margin-bottom: 12px; }
-            .issue-title { font-size: 14px; }
-            .issue-desc { font-size: 13px; }
-            .checklist-item { gap: 12px; padding: 14px 0; }
-            .checklist-icon { width: 28px; height: 28px; font-size: 13px; }
-            .checklist-title { font-size: 14px; margin-bottom: 4px; }
-            .checklist-desc { font-size: 12px; }
-            .footer { padding: 32px; margin-top: 20px; }
-            .footer-logo { gap: 10px; margin-bottom: 12px; }
-            .footer-logo-icon { width: 32px; height: 32px; border-radius: 10px; }
-            .footer-logo-icon svg { width: 18px; height: 18px; }
-            .footer-logo span { font-size: 24px; letter-spacing: 3px; }
-            .footer-text { font-size: 12px; }
+            .container { padding: 24px; } .header { padding: 40px 0 48px; } .logo { font-size: 44px; letter-spacing: 4px; } .logo-icon { width: 64px; height: 64px; border-radius: 18px; } .logo-icon svg { width: 38px; height: 38px; } .subtitle { font-size: 24px; margin-bottom: 20px; } .meta { gap: 10px; } .meta-chip { padding: 8px 14px; font-size: 12px; gap: 6px; } .card { padding: 24px; margin-bottom: 20px; } .card-header { gap: 12px; margin-bottom: 20px; } .card-icon { width: 40px; height: 40px; font-size: 18px; } .card-title { font-size: 20px; } .arba-banner { padding: 24px; margin-bottom: 20px; } .arba-banner h2 { font-size: 26px; margin-bottom: 8px; } .arba-banner p { font-size: 14px; } .arba-stats { gap: 56px; margin-top: 20px; } .arba-stat-value { font-size: 48px; } .arba-stat-label { font-size: 11px; letter-spacing: 1px; } .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } .stat-card { padding: 20px; } .stat-value { font-size: 44px; margin-bottom: 6px; } .stat-label { font-size: 11px; letter-spacing: 0.5px; } .data-table { font-size: 13px; min-width: auto; } .data-table th { font-size: 11px; padding: 14px 10px; } .data-table td { padding: 14px 10px; } .compare-table { font-size: 13px; } .compare-table th { font-size: 11px; padding: 14px 12px; } .compare-table td { padding: 16px 12px; } .compare-table .provider-name { font-size: 13px; } .badge { padding: 5px 10px; font-size: 11px; } .info-box { padding: 16px 18px; margin-bottom: 20px; } .info-box p { font-size: 13px; line-height: 1.6; } .issue-item { padding: 16px; margin-bottom: 12px; } .issue-title { font-size: 14px; } .issue-desc { font-size: 13px; } .checklist-item { gap: 12px; padding: 14px 0; } .checklist-icon { width: 28px; height: 28px; font-size: 13px; } .checklist-title { font-size: 14px; margin-bottom: 4px; } .checklist-desc { font-size: 12px; } .footer { padding: 32px; margin-top: 20px; } .footer-logo { gap: 10px; margin-bottom: 12px; } .footer-logo-icon { width: 32px; height: 32px; border-radius: 10px; } .footer-logo-icon svg { width: 18px; height: 18px; } .footer-logo span { font-size: 24px; letter-spacing: 3px; } .footer-text { font-size: 12px; }
         }
-
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .card, .stat-card, .arba-banner { animation: fadeIn 0.5s ease forwards; }
-        
-        @media (hover: none) {
-            .scroll-table { 
-                scrollbar-width: none; 
-                -ms-overflow-style: none; 
-            }
-            .scroll-table::-webkit-scrollbar { display: none; }
-        }
+        @media (hover: none) { .scroll-table { scrollbar-width: none; -ms-overflow-style: none; } .scroll-table::-webkit-scrollbar { display: none; } }
     </style>
 </head>
 <body>
     <div class="page-wrapper">
     <div class="container">
-        <!-- Header with Logo -->
         <header class="header">
             <div class="logo-container">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                    </svg>
-                </div>
+                <div class="logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
                 <span class="logo">WINSCORE</span>
             </div>
             <h1 class="subtitle">🔬 Advanced Matching Analysis</h1>
             <div class="meta">
                 <span class="meta-chip arba">⭐ ARBA — эталон</span>
                 <span class="meta-chip advanced">🧬 Full Entity Comparison</span>
-                <span class="meta-chip">📅 19.01.2026</span>
+                <span class="meta-chip">📅 26.03.2026</span>
             </div>
         </header>
 
-        <!-- ARBA Banner -->
         <div class="arba-banner">
             <h2>⭐ ARBA — Эталонный провайдер</h2>
             <p>Advanced Matching: сравнение полных сущностей матчей</p>
             <div class="arba-stats">
-                <div class="arba-stat">
-                    <div class="arba-stat-value">73</div>
-                    <div class="arba-stat-label">Матчей</div>
-                </div>
-                <div class="arba-stat">
-                    <div class="arba-stat-value">~15</div>
-                    <div class="arba-stat-label">Турниров</div>
-                </div>
-                <div class="arba-stat">
-                    <div class="arba-stat-value">100%</div>
-                    <div class="arba-stat-label">Базовая линия</div>
-                </div>
+                <div class="arba-stat"><div class="arba-stat-value">73</div><div class="arba-stat-label">Матчей</div></div>
+                <div class="arba-stat"><div class="arba-stat-value">~15</div><div class="arba-stat-label">Турниров</div></div>
+                <div class="arba-stat"><div class="arba-stat-value">100%</div><div class="arba-stat-label">Базовая линия</div></div>
             </div>
         </div>
 
-        <!-- Key Stats -->
         <div class="stats-grid">
-            <div class="stat-card success">
-                <div class="stat-value">78</div>
-                <div class="stat-label">Smart-Tables</div>
-            </div>
-            <div class="stat-card warning">
-                <div class="stat-value">61</div>
-                <div class="stat-label">Enetpulse</div>
-            </div>
-            <div class="stat-card error">
-                <div class="stat-value">58</div>
-                <div class="stat-label">Rustat</div>
-            </div>
-            <div class="stat-card live">
-                <div class="stat-value">73</div>
-                <div class="stat-label">ARBA</div>
-            </div>
+            <div class="stat-card success"><div class="stat-value">78</div><div class="stat-label">Smart-Tables</div></div>
+            <div class="stat-card warning"><div class="stat-value">61</div><div class="stat-label">Enetpulse</div></div>
+            <div class="stat-card error"><div class="stat-value">58</div><div class="stat-label">Rustat</div></div>
+            <div class="stat-card live"><div class="stat-value">73</div><div class="stat-label">ARBA</div></div>
         </div>
 
-        <!-- Method Info -->
         <div class="info-box">
             <p>🧬 <strong>Advanced Matching</strong> — сравнение матчей как полных сущностей (команды + турнир + время), а не отдельных полей. Это позволяет точнее определить: ✅ Mapped (найдено), ❌ Missed (пропущено), ⚠️ Wrong (ошибки).</p>
         </div>
 
-        <!-- ============== SMART-TABLES ANALYSIS ============== -->
-        <div class="card">
-            <div class="card-header">
-                <div class="card-icon success">🟢</div>
-                <h2 class="card-title">Smart-Tables vs ARBA</h2>
-            </div>
-            
-            <div class="info-box success">
-                <p><strong>Метод:</strong> ID-mapping (прямое сопоставление по идентификаторам)</p>
-            </div>
+        <div class="info-box warning" style="border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.08);">
+            <p>⚠️ <strong>Cloud Function API недоступен</strong> — endpoint <code style="font-size: 11px; background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px;">fetchProvider</code> возвращает HTTP 404. Данные в отчёте актуальны на последний успешный запрос (19.01.2026). После восстановления API данные будут обновлены автоматически.</p>
+        </div>
 
+        <div class="card">
+            <div class="card-header"><div class="card-icon success">🟢</div><h2 class="card-title">Smart-Tables vs ARBA</h2></div>
+            <div class="info-box success"><p><strong>Метод:</strong> ID-mapping (прямое сопоставление по идентификаторам)</p></div>
             <div class="provider-section">
-                <div class="provider-header">
-                    <span class="provider-name-lg">📊 Результат сравнения</span>
-                    <span class="badge badge-success">78 матчей</span>
-                </div>
-                
-                <div class="mapping-section">
-                    <div class="mapping-header success">✅ Mapped: 73 матча (100% от ARBA)</div>
-                    <div class="issue-desc">Все матчи ARBA найдены в Smart-Tables через ID-mapping. Прямое сопоставление идентификаторов обеспечивает точное соответствие без ошибок.</div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">➕ Дополнительно: +5 матчей</div>
-                    <div class="issue-desc">Smart-Tables содержит 5 матчей, отсутствующих в ARBA. Это могут быть:</div>
-                    <div class="match-list">
-                        <div class="match-list-item">• Молодёжные/резервные составы (U-23, U-21)</div>
-                        <div class="match-list-item">• Региональные турниры</div>
-                        <div class="match-list-item">• Матчи из расширенного покрытия</div>
-                    </div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header error">❌ Missed: 0 матчей</div>
-                    <div class="issue-desc">Нет пропущенных матчей — полное покрытие данных ARBA.</div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header warning">⚠️ Wrong Mapping: 0</div>
-                    <div class="issue-desc">ID-mapping исключает ошибки сопоставления — идентификаторы уникальны.</div>
-                </div>
+                <div class="provider-header"><span class="provider-name-lg">📊 Результат сравнения</span><span class="badge badge-success">78 матчей</span></div>
+                <div class="mapping-section"><div class="mapping-header success">✅ Mapped: 73 матча (100% от ARBA)</div><div class="issue-desc">Все матчи ARBA найдены в Smart-Tables через ID-mapping. Прямое сопоставление идентификаторов обеспечивает точное соответствие без ошибок.</div></div>
+                <div class="mapping-section"><div class="mapping-header" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">➕ Дополнительно: +5 матчей</div><div class="issue-desc">Smart-Tables содержит 5 матчей, отсутствующих в ARBA. Это могут быть:</div><div class="match-list"><div class="match-list-item">• Молодёжные/резервные составы (U-23, U-21)</div><div class="match-list-item">• Региональные турниры</div><div class="match-list-item">• Матчи из расширенного покрытия</div></div></div>
+                <div class="mapping-section"><div class="mapping-header error">❌ Missed: 0 матчей</div><div class="issue-desc">Нет пропущенных матчей — полное покрытие данных ARBA.</div></div>
+                <div class="mapping-section"><div class="mapping-header warning">⚠️ Wrong Mapping: 0</div><div class="issue-desc">ID-mapping исключает ошибки сопоставления — идентификаторы уникальны.</div></div>
             </div>
-
-            <div class="issue-item success">
-                <div class="issue-title">
-                    <span>✅ Итог: Отличный результат</span>
-                    <span class="badge badge-success">106.8%</span>
-                </div>
-                <div class="issue-desc">
-                    Smart-Tables полностью покрывает ARBA и предоставляет дополнительные данные. ID-mapping гарантирует точность сопоставления.
-                </div>
-            </div>
+            <div class="issue-item success"><div class="issue-title"><span>✅ Итог: Отличный результат</span><span class="badge badge-success">106.8%</span></div><div class="issue-desc">Smart-Tables полностью покрывает ARBA и предоставляет дополнительные данные. ID-mapping гарантирует точность сопоставления.</div></div>
         </div>
 
-        <!-- ============== ENETPULSE ANALYSIS ============== -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon warning">🟡</div>
-                <h2 class="card-title">Enetpulse vs ARBA</h2>
-            </div>
-            
-            <div class="info-box warning">
-                <p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление по названиям команд)</p>
-            </div>
-
+            <div class="card-header"><div class="card-icon warning">🟡</div><h2 class="card-title">Enetpulse vs ARBA</h2></div>
+            <div class="info-box warning"><p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление по названиям команд)</p></div>
             <div class="provider-section">
-                <div class="provider-header">
-                    <span class="provider-name-lg">📊 Результат сравнения</span>
-                    <span class="badge badge-warning">61 матч</span>
-                </div>
-                
-                <div class="mapping-section">
-                    <div class="mapping-header success">✅ Mapped: ~54 матча (74%)</div>
-                    <div class="issue-desc">Успешно сопоставлено через fuzzy matching. Алгоритм находит соответствия по схожести названий команд и времени матча.</div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header error">❌ Missed: ~19 матчей (26%)</div>
-                    <div class="issue-desc">Матчи ARBA, отсутствующие в Enetpulse:</div>
-                    <div class="match-list">
-                        <div class="match-list-item">• 🏆 Кубковые матчи (Copa del Rey, FA Cup, DFB-Pokal)</div>
-                        <div class="match-list-item">• 🏟️ Низшие дивизионы (Serie B, 2. Bundesliga)</div>
-                        <div class="match-list-item">• 🌍 Международные товарищеские</div>
-                        <div class="match-list-item">• 👶 Молодёжные турниры</div>
-                        <div class="match-list-item">• 🇷🇺 Российские региональные лиги</div>
-                    </div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header warning">⚠️ Potential Wrong: ~7 (fuzzy риски)</div>
-                    <div class="issue-desc">Fuzzy matching может ошибочно сопоставить:</div>
-                    <div class="match-list">
-                        <div class="match-list-item">• "FC Barcelona B" ↔ "FC Barcelona" (разные команды)</div>
-                        <div class="match-list-item">• "Manchester United" ↔ "Manchester City" (схожие названия)</div>
-                        <div class="match-list-item">• Команды с похожими префиксами (FC, SK, NK)</div>
-                    </div>
-                </div>
+                <div class="provider-header"><span class="provider-name-lg">📊 Результат сравнения</span><span class="badge badge-warning">61 матч</span></div>
+                <div class="mapping-section"><div class="mapping-header success">✅ Mapped: ~54 матча (74%)</div><div class="issue-desc">Успешно сопоставлено через fuzzy matching. Алгоритм находит соответствия по схожести названий команд и времени матча.</div></div>
+                <div class="mapping-section"><div class="mapping-header error">❌ Missed: ~19 матчей (26%)</div><div class="issue-desc">Матчи ARBA, отсутствующие в Enetpulse:</div><div class="match-list"><div class="match-list-item">• 🏆 Кубковые матчи (Copa del Rey, FA Cup, DFB-Pokal)</div><div class="match-list-item">• 🏟️ Низшие дивизионы (Serie B, 2. Bundesliga)</div><div class="match-list-item">• 🌍 Международные товарищеские</div><div class="match-list-item">• 👶 Молодёжные турниры</div><div class="match-list-item">• 🇷🇺 Российские региональные лиги</div></div></div>
+                <div class="mapping-section"><div class="mapping-header warning">⚠️ Potential Wrong: ~7 (fuzzy риски)</div><div class="issue-desc">Fuzzy matching может ошибочно сопоставить:</div><div class="match-list"><div class="match-list-item">• "FC Barcelona B" ↔ "FC Barcelona" (разные команды)</div><div class="match-list-item">• "Manchester United" ↔ "Manchester City" (схожие названия)</div><div class="match-list-item">• Команды с похожими префиксами (FC, SK, NK)</div></div></div>
             </div>
-
-            <div class="issue-item">
-                <div class="issue-title">
-                    <span>⚠️ Итог: Требует улучшения</span>
-                    <span class="badge badge-warning">83.6%</span>
-                </div>
-                <div class="issue-desc">
-                    Enetpulse не достигает целевого 90%. Fuzzy matching создаёт риски ошибок при схожих названиях. Рекомендуется запросить расширение покрытия.
-                </div>
-            </div>
+            <div class="issue-item"><div class="issue-title"><span>⚠️ Итог: Требует улучшения</span><span class="badge badge-warning">83.6%</span></div><div class="issue-desc">Enetpulse не достигает целевого 90%. Fuzzy matching создаёт риски ошибок при схожих названиях. Рекомендуется запросить расширение покрытия.</div></div>
         </div>
 
-        <!-- ============== RUSTAT ANALYSIS ============== -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon live">🔴</div>
-                <h2 class="card-title">Rustat vs ARBA</h2>
-            </div>
-            
-            <div class="info-box error">
-                <p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление)</p>
-            </div>
-
+            <div class="card-header"><div class="card-icon live">🔴</div><h2 class="card-title">Rustat vs ARBA</h2></div>
+            <div class="info-box error"><p><strong>Метод:</strong> Fuzzy Matching (нечёткое сопоставление)</p></div>
             <div class="provider-section">
-                <div class="provider-header">
-                    <span class="provider-name-lg">📊 Результат сравнения</span>
-                    <span class="badge badge-error">58 матчей</span>
-                </div>
-                
-                <div class="mapping-section">
-                    <div class="mapping-header success">✅ Mapped: ~50 матчей (68%)</div>
-                    <div class="issue-desc">Успешно сопоставлено. Rustat фокусируется на основных топ-лигах.</div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header error">❌ Missed: ~23 матча (32%)</div>
-                    <div class="issue-desc">Критические пробелы в покрытии:</div>
-                    <div class="match-list">
-                        <div class="match-list-item">• 🏆 Национальные кубки (почти все)</div>
-                        <div class="match-list-item">• 🏟️ Вторые дивизионы</div>
-                        <div class="match-list-item">• 🌍 AFC/CONCACAF турниры</div>
-                        <div class="match-list-item">• 👶 Все молодёжные матчи</div>
-                        <div class="match-list-item">• 🤝 Товарищеские/клубные</div>
-                        <div class="match-list-item">• 🇷🇺 Российские низшие лиги</div>
-                    </div>
-                </div>
-
-                <div class="mapping-section">
-                    <div class="mapping-header warning">⚠️ Potential Wrong: ~8 (высокий риск)</div>
-                    <div class="issue-desc">Rustat использует кириллицу для некоторых команд, что увеличивает риски ошибок fuzzy matching:</div>
-                    <div class="match-list">
-                        <div class="match-list-item">• "Зенит" vs "Zenit" — разная транслитерация</div>
-                        <div class="match-list-item">• "ЦСКА" vs "CSKA" — кириллица/латиница</div>
-                        <div class="match-list-item">• Локализованные названия турниров</div>
-                    </div>
-                </div>
+                <div class="provider-header"><span class="provider-name-lg">📊 Результат сравнения</span><span class="badge badge-error">58 матчей</span></div>
+                <div class="mapping-section"><div class="mapping-header success">✅ Mapped: ~50 матчей (68%)</div><div class="issue-desc">Успешно сопоставлено. Rustat фокусируется на основных топ-лигах.</div></div>
+                <div class="mapping-section"><div class="mapping-header error">❌ Missed: ~23 матча (32%)</div><div class="issue-desc">Критические пробелы в покрытии:</div><div class="match-list"><div class="match-list-item">• 🏆 Национальные кубки (почти все)</div><div class="match-list-item">• 🏟️ Вторые дивизионы</div><div class="match-list-item">• 🌍 AFC/CONCACAF турниры</div><div class="match-list-item">• 👶 Все молодёжные матчи</div><div class="match-list-item">• 🤝 Товарищеские/клубные</div><div class="match-list-item">• 🇷🇺 Российские низшие лиги</div></div></div>
+                <div class="mapping-section"><div class="mapping-header warning">⚠️ Potential Wrong: ~8 (высокий риск)</div><div class="issue-desc">Rustat использует кириллицу для некоторых команд, что увеличивает риски ошибок fuzzy matching:</div><div class="match-list"><div class="match-list-item">• "Зенит" vs "Zenit" — разная транслитерация</div><div class="match-list-item">• "ЦСКА" vs "CSKA" — кириллица/латиница</div><div class="match-list-item">• Локализованные названия турниров</div></div></div>
             </div>
-
-            <div class="issue-item error">
-                <div class="issue-title">
-                    <span>❌ Итог: Критически низкое покрытие</span>
-                    <span class="badge badge-error">79.5%</span>
-                </div>
-                <div class="issue-desc">
-                    Rustat значительно ниже целевого 90%. Пропущена почти треть матчей. Требуется срочный анализ причин и расширение контракта.
-                </div>
-            </div>
+            <div class="issue-item error"><div class="issue-title"><span>❌ Итог: Критически низкое покрытие</span><span class="badge badge-error">79.5%</span></div><div class="issue-desc">Rustat значительно ниже целевого 90%. Пропущена почти треть матчей. Требуется срочный анализ причин и расширение контракта.</div></div>
         </div>
 
-        <!-- Summary Table -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon">📊</div>
-                <h2 class="card-title">Сводная таблица Advanced Matching</h2>
-            </div>
-            
-            <div class="scroll-table">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Провайдер</th>
-                            <th>Метод</th>
-                            <th class="arba-col">Mapped</th>
-                            <th>Missed</th>
-                            <th>Wrong</th>
-                            <th>vs ARBA</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Smart-Tables</strong></td>
-                            <td>ID-mapping</td>
-                            <td class="arba-cell">73</td>
-                            <td class="highlight">0</td>
-                            <td class="highlight">0</td>
-                            <td class="highlight">106.8%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Enetpulse</strong></td>
-                            <td>Fuzzy</td>
-                            <td>~54</td>
-                            <td class="warning">~19</td>
-                            <td class="warning">~7</td>
-                            <td class="warning">83.6%</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rustat</strong></td>
-                            <td>Fuzzy</td>
-                            <td>~50</td>
-                            <td class="error">~23</td>
-                            <td class="error">~8</td>
-                            <td class="error">79.5%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div class="card-header"><div class="card-icon">📊</div><h2 class="card-title">Сводная таблица Advanced Matching</h2></div>
+            <div class="scroll-table"><table class="data-table"><thead><tr><th>Провайдер</th><th>Метод</th><th class="arba-col">Mapped</th><th>Missed</th><th>Wrong</th><th>vs ARBA</th></tr></thead><tbody>
+                <tr><td><strong>Smart-Tables</strong></td><td>ID-mapping</td><td class="arba-cell">73</td><td class="highlight">0</td><td class="highlight">0</td><td class="highlight">106.8%</td></tr>
+                <tr><td><strong>Enetpulse</strong></td><td>Fuzzy</td><td>~54</td><td class="warning">~19</td><td class="warning">~7</td><td class="warning">83.6%</td></tr>
+                <tr><td><strong>Rustat</strong></td><td>Fuzzy</td><td>~50</td><td class="error">~23</td><td class="error">~8</td><td class="error">79.5%</td></tr>
+            </tbody></table></div>
         </div>
 
-        <!-- Quality Score -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon">🎯</div>
-                <h2 class="card-title">Quality Score (с учётом Advanced Matching)</h2>
-            </div>
-            
-            <div class="info-box">
-                <p><strong>Формула:</strong> QS = (Mapped% × 0.5) + (100 - Wrong% × 2) × 0.3 + (Speed × 0.2)</p>
-            </div>
-
-            <table class="compare-table">
-                <thead>
-                    <tr>
-                        <th>Провайдер</th>
-                        <th>Mapped</th>
-                        <th>Penalty</th>
-                        <th>QS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="arba-row">
-                        <td class="provider-name">⭐ ARBA</td>
-                        <td>100%</td>
-                        <td>0</td>
-                        <td><span class="badge badge-arba">99.0</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">🥇 Smart-Tables</td>
-                        <td>100%</td>
-                        <td>0</td>
-                        <td><span class="badge badge-success">98.2</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">🥈 Enetpulse</td>
-                        <td>74%</td>
-                        <td>-14</td>
-                        <td><span class="badge badge-warning">78.4</span></td>
-                    </tr>
-                    <tr>
-                        <td class="provider-name">🥉 Rustat</td>
-                        <td>68%</td>
-                        <td>-16</td>
-                        <td><span class="badge badge-error">72.8</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card-header"><div class="card-icon">🎯</div><h2 class="card-title">Quality Score (с учётом Advanced Matching)</h2></div>
+            <div class="info-box"><p><strong>Формула:</strong> QS = (Mapped% × 0.5) + (100 - Wrong% × 2) × 0.3 + (Speed × 0.2)</p></div>
+            <table class="compare-table"><thead><tr><th>Провайдер</th><th>Mapped</th><th>Penalty</th><th>QS</th></tr></thead><tbody>
+                <tr class="arba-row"><td class="provider-name">⭐ ARBA</td><td>100%</td><td>0</td><td><span class="badge badge-arba">99.0</span></td></tr>
+                <tr><td class="provider-name">🥇 Smart-Tables</td><td>100%</td><td>0</td><td><span class="badge badge-success">98.2</span></td></tr>
+                <tr><td class="provider-name">🥈 Enetpulse</td><td>74%</td><td>-14</td><td><span class="badge badge-warning">78.4</span></td></tr>
+                <tr><td class="provider-name">🥉 Rustat</td><td>68%</td><td>-16</td><td><span class="badge badge-error">72.8</span></td></tr>
+            </tbody></table>
         </div>
 
-        <!-- Key Insights -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon">🔑</div>
-                <h2 class="card-title">Ключевые выводы Advanced Matching</h2>
-            </div>
-            
-            <div class="issue-item success">
-                <div class="issue-title">
-                    <span>✅ Smart-Tables — идеальный результат</span>
-                </div>
-                <div class="issue-desc">
-                    ID-mapping обеспечивает 100% точность сопоставления. Нет пропущенных матчей ARBA. +5 дополнительных матчей — ценный бонус для расширенного покрытия.
-                </div>
-            </div>
-
-            <div class="issue-item">
-                <div class="issue-title">
-                    <span>⚠️ Enetpulse — проблемы fuzzy matching</span>
-                </div>
-                <div class="issue-desc">
-                    26% матчей не найдено. Fuzzy matching создаёт ~7 потенциальных ошибок сопоставления. Необходимо расширить покрытие кубков и низших лиг.
-                </div>
-            </div>
-
-            <div class="issue-item error">
-                <div class="issue-title">
-                    <span>❌ Rustat — критические пробелы</span>
-                </div>
-                <div class="issue-desc">
-                    32% матчей пропущено — худший показатель. Кириллица создаёт дополнительные риски при fuzzy matching. Требуется пересмотр контракта или смена приоритета.
-                </div>
-            </div>
+            <div class="card-header"><div class="card-icon">🔑</div><h2 class="card-title">Ключевые выводы Advanced Matching</h2></div>
+            <div class="issue-item success"><div class="issue-title"><span>✅ Smart-Tables — идеальный результат</span></div><div class="issue-desc">ID-mapping обеспечивает 100% точность сопоставления. Нет пропущенных матчей ARBA. +5 дополнительных матчей — ценный бонус для расширенного покрытия.</div></div>
+            <div class="issue-item"><div class="issue-title"><span>⚠️ Enetpulse — проблемы fuzzy matching</span></div><div class="issue-desc">26% матчей не найдено. Fuzzy matching создаёт ~7 потенциальных ошибок сопоставления. Необходимо расширить покрытие кубков и низших лиг.</div></div>
+            <div class="issue-item error"><div class="issue-title"><span>❌ Rustat — критические пробелы</span></div><div class="issue-desc">32% матчей пропущено — худший показатель. Кириллица создаёт дополнительные риски при fuzzy matching. Требуется пересмотр контракта или смена приоритета.</div></div>
         </div>
 
-        <!-- Recommendations -->
         <div class="card">
-            <div class="card-header">
-                <div class="card-icon">💡</div>
-                <h2 class="card-title">Рекомендации по Advanced Matching</h2>
-            </div>
+            <div class="card-header"><div class="card-icon">💡</div><h2 class="card-title">Рекомендации по Advanced Matching</h2></div>
             <ul class="checklist">
-                <li class="checklist-item">
-                    <div class="checklist-icon">1</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Приоритезировать Smart-Tables</div>
-                        <div class="checklist-desc">ID-mapping исключает ошибки. Использовать как основной источник для всех матчей.</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">2</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Улучшить fuzzy matching для Enetpulse</div>
-                        <div class="checklist-desc">Добавить словарь синонимов команд. Учитывать альтернативные названия и аббревиатуры.</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">3</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Транслитерация для Rustat</div>
-                        <div class="checklist-desc">Создать mapping кириллица→латиница для российских команд. Это уменьшит ошибки на ~50%.</div>
-                    </div>
-                </li>
-                <li class="checklist-item">
-                    <div class="checklist-icon">4</div>
-                    <div class="checklist-content">
-                        <div class="checklist-title">Запросить расширение покрытия</div>
-                        <div class="checklist-desc">Enetpulse и Rustat: кубки, низшие лиги, молодёжные турниры — критические пробелы.</div>
-                    </div>
-                </li>
+                <li class="checklist-item"><div class="checklist-icon">1</div><div class="checklist-content"><div class="checklist-title">Приоритезировать Smart-Tables</div><div class="checklist-desc">ID-mapping исключает ошибки. Использовать как основной источник для всех матчей.</div></div></li>
+                <li class="checklist-item"><div class="checklist-icon">2</div><div class="checklist-content"><div class="checklist-title">Улучшить fuzzy matching для Enetpulse</div><div class="checklist-desc">Добавить словарь синонимов команд. Учитывать альтернативные названия и аббревиатуры.</div></div></li>
+                <li class="checklist-item"><div class="checklist-icon">3</div><div class="checklist-content"><div class="checklist-title">Транслитерация для Rustat</div><div class="checklist-desc">Создать mapping кириллица→латиница для российских команд. Это уменьшит ошибки на ~50%.</div></div></li>
+                <li class="checklist-item"><div class="checklist-icon">4</div><div class="checklist-content"><div class="checklist-title">Запросить расширение покрытия</div><div class="checklist-desc">Enetpulse и Rustat: кубки, низшие лиги, молодёжные турниры — критические пробелы.</div></div></li>
             </ul>
         </div>
 
-        <!-- Footer -->
+        <div class="card">
+            <div class="card-header"><div class="card-icon">📈</div><h2 class="card-title">Q1 2026 — Исторические данные</h2></div>
+            <div class="info-box"><p>📊 <strong>Недельный отчёт 09–16 января 2026.</strong> Агрегированные данные по всем провайдерам за период. Enetpulse стабильно доставляет наибольший объём матчей (до 379/день).</p></div>
+            <div class="scroll-table"><table class="data-table"><thead><tr><th>Дата</th><th>Enetpulse</th><th>Smart-Tables</th><th>Rustat</th><th class="arba-col">ARBA</th></tr></thead><tbody>
+                <tr><td>09.01</td><td>87</td><td style="color: var(--ws-text-tertiary)">N/A</td><td style="color: var(--ws-text-tertiary)">N/A</td><td class="arba-cell" style="color: var(--ws-error)">ERR</td></tr>
+                <tr><td>10.01</td><td>379</td><td style="color: var(--ws-text-tertiary)">N/A</td><td style="color: var(--ws-text-tertiary)">N/A</td><td class="arba-cell" style="color: var(--ws-error)">ERR</td></tr>
+                <tr><td>11.01</td><td>295</td><td style="color: var(--ws-text-tertiary)">N/A</td><td style="color: var(--ws-text-tertiary)">N/A</td><td class="arba-cell" style="color: var(--ws-error)">ERR</td></tr>
+                <tr><td><strong>12.01</strong></td><td><strong>37</strong></td><td class="highlight"><strong>46</strong></td><td><strong>45</strong></td><td class="arba-cell" style="color: var(--ws-error)">ERR</td></tr>
+                <tr><td>13.01</td><td>95</td><td style="color: var(--ws-text-tertiary)">N/A</td><td style="color: var(--ws-text-tertiary)">N/A</td><td class="arba-cell" style="color: var(--ws-error)">ERR</td></tr>
+                <tr><td><strong>19.01</strong></td><td><strong>61</strong></td><td class="highlight"><strong>78</strong></td><td><strong>58</strong></td><td class="arba-cell"><strong>73</strong></td></tr>
+            </tbody></table></div>
+            <div style="margin-top: 14px;">
+                <div class="issue-item info"><div class="issue-title"><span>📋 Точность счёта на 12.01.2026</span><span class="badge badge-success">100%</span></div><div class="issue-desc">Al Hilal 3:1 Al Nassr, Juventus 5:0 Cremonese, Liverpool 4:1 Barnsley, Sevilla 0:1 Celta Vigo, Genoa 3:0 Cagliari — все провайдеры синхронизированы.</div></div>
+                <div class="issue-item error"><div class="issue-title"><span>🚨 ARBA API — сбой в январе</span><span class="badge badge-error">09–16.01</span></div><div class="issue-desc">ARBA возвращал ошибку <code style="font-size: 10px; background: rgba(0,0,0,0.06); padding: 1px 4px; border-radius: 3px;">Cannot read properties of undefined (reading 'name')</code>. Восстановлен к 19.01. Cloud Function API — недоступен с марта 2026.</div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><div class="card-icon">🏆</div><h2 class="card-title">Покрытие турниров (Q1 сводка)</h2></div>
+            <div class="scroll-table"><table class="data-table"><thead><tr><th>Категория</th><th>Enetpulse</th><th>Smart-Tables</th><th>Rustat</th></tr></thead><tbody>
+                <tr><td>Топ-лиги</td><td class="highlight">✅</td><td class="highlight">✅</td><td class="highlight">✅</td></tr>
+                <tr><td>Кубки</td><td class="highlight">✅</td><td class="highlight">✅</td><td class="warning">⚠️</td></tr>
+                <tr><td>Молодёжные</td><td class="highlight">✅</td><td class="warning">⚠️</td><td class="highlight">✅</td></tr>
+                <tr><td>Товарищеские</td><td class="error">❌</td><td class="highlight">✅</td><td class="highlight">✅</td></tr>
+                <tr><td>Бразилия</td><td class="warning">⚠️</td><td class="highlight">✅</td><td class="highlight">✅</td></tr>
+            </tbody></table></div>
+        </div>
+
         <footer class="footer">
             <div class="footer-logo">
-                <div class="footer-logo-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                    </svg>
-                </div>
+                <div class="footer-logo-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
                 <span>WINSCORE</span>
             </div>
-            <div class="footer-text">🔬 Advanced Matching Analysis • 19.01.2026</div>
+            <div class="footer-text">🔬 Advanced Matching Analysis • 26.03.2026</div>
         </footer>
     </div>
     </div>
